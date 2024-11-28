@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 
+import { SegurancaService } from '../../configuration/security/seguranca.service';
 import { ErrorHandlerService } from '../../configuration/core/error-handler.service';
 import { MenuService } from '../../configuration/core/menu.service';
-import { AuthorizationService } from '../../configuration/security/authorization.service';
 import { SystemService } from '../../configuration/core/system.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class MenuComponent {
   public versaoApi!: string;
 
   constructor(
-    public authorizationService: AuthorizationService,
+    public segurancaService: SegurancaService,
     public systemService: SystemService,
     public router: Router,
     public confirmation: ConfirmationService,
@@ -49,7 +49,7 @@ export class MenuComponent {
   }
 
   logout() {
-    this.authorizationService.logout();
+    this.segurancaService.logout();
     this.router.navigate(['/login']);
     this.mostrarMenu = false;
     this.menuService.exibirMenu(this.mostrarMenu);

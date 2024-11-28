@@ -6,11 +6,10 @@
         <a href="javascript:;" [ngClass]="{'navbar-botao-menu': mostrarMenu, 'navbar-botao-menu-colapse':!mostrarMenu}" (click)="mostrarMenuLateral()"><i class="pi pi-bars navbar-botao-icone-menu"></i></a>
         <a href="javascript:;" class="navbar-botao-sair" (click)="logout()"><i class="pi pi-sign-in"></i>SAIR</a>
         <span class="navbar-versao">VERSÃO API: {{versaoApi}}</span>
-        <a href="javascript:;" class="navbar-botao-sair"><i class="pi pi-user"></i>USUÁRIO: {{ authorizationService.jwtPayload?.nome }}</a>
+        <a href="javascript:;" class="navbar-botao-sair"><i class="pi pi-user"></i>USUÁRIO: {{ segurancaService.jwtPayload?.nome }}</a>
       </div>
     </div>
   </nav>
-
 
   <!--Menu lateral -->
   <div>
@@ -19,23 +18,75 @@
       <div class="imagem-fundo">
         <div>
           <a class="col-12" routerLink="/principal" (click)="navegar('/principal')">
-            <img src="assets/images/logo-bullla.svg" class="imagem-usuario"/>
+            <img src="assets/images/logo.svg" class="imagem-usuario"/>
           </a>
         </div>
       </div>
 
-      @if(authorizationService.temPermissao('MENU_CADASTRO')){
+      @if(segurancaService.temPermissao('MENU_CADASTRO')){
         <div class="navbar-grupo-menu">
           <input type="checkbox" id="cadastro"/>
           <label class="label-menu cursor-pointer" for="cadastro" ><i class="pi pi-book" aria-hidden="true"></i>Cadastro</label>
           <ul>
 
-            @if(authorizationService.temPermissao('CATEGORIA_CONSULTAR')){
+            @if(segurancaService.temPermissao('CATEGORIA_CONSULTAR')){
               <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
                 <a (click)="navegar('/categoria/listar')"><i class="pi pi-building" aria-hidden="true"></i>Categoria</a>
               </li>
             }
           
+          </ul>
+        </div>
+      }
+
+      @if(segurancaService.temPermissao('MENU_MOVIMENTACAO')){
+        <div class="navbar-grupo-menu">
+          <input type="checkbox" id="movimentacao"/>
+          <label class="label-menu cursor-pointer" for="movimentacao" ><i class="pi pi-book" aria-hidden="true"></i>Movimentação</label>
+          <ul>
+
+            
+          
+          </ul>
+        </div>
+      }
+
+      @if(segurancaService.temPermissao('MENU_FINANCEIRO')){
+        <div class="navbar-grupo-menu">
+          <input type="checkbox" id="financeiro"/>
+          <label class="label-menu cursor-pointer" for="financeiro" ><i class="pi pi-book" aria-hidden="true"></i>Financeiro</label>
+          <ul>
+
+            
+          
+          </ul>
+        </div>
+      }
+
+      @if(segurancaService.temPermissao('MENU_SEGURANCA')) {
+        <div class="navbar-grupo-menu">
+          <input type="checkbox" id="seguranca"/>
+          <label class="label-menu cursor-pointer" for="seguranca"><i class="pi pi-lock" aria-hidden="true"></i>Segurança</label>
+          <ul>
+  
+            @if(segurancaService.temPermissao('PERFIL_CONSULTAR')) {
+              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
+                <a (click)="navegar('/perfil/listar')"><i class="fa-solid fa-globe"></i>Perfil</a>
+              </li>
+            }
+    
+            @if(segurancaService.temPermissao('PERMISSAO_CONSULTAR')) {
+              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
+                <a (click)="navegar('/permissao/listar')"><i class="fa-solid fa-key"></i>Permissão</a>
+              </li>
+            }
+  
+            @if(segurancaService.temPermissao('USUARIO_CONSULTAR')) {
+              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
+                <a (click)="navegar('/usuario/listar')"><i class="pi pi-users"></i>Usuário</a>
+              </li>
+            }
+    
           </ul>
         </div>
       }

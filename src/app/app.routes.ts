@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { SegurancaGuard } from './configuration/guard/seguranca.guard';
-import { SegurancaDeactivateGuard } from './configuration/guard/seguranca.deactivate.guard';
+import { SegurancaGuard } from './configuration/security/seguranca.guard';
+import { SegurancaDeactivateGuard } from './configuration/security/seguranca.deactivate.guard';
 import { LoginComponent } from './components/login/login.component';
 import { AcessoNaoAutorizadoComponent } from './components/acesso-nao-autorizado/acesso-nao-autorizado.component';
 import { PaginaPrincipalComponent } from './components/pagina-principal/pagina-principal.component';

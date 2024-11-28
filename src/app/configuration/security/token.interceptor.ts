@@ -1,17 +1,18 @@
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpInterceptorFn } from '@angular/common/http';
-import { AuthorizationService } from '../security/authorization.service';
+
+import { SegurancaService } from './seguranca.service';
 
 export class NotAuthenticatedError {}
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   let router = inject(Router);
-  let authorizationService = inject(AuthorizationService);
+  let segurancaService = inject(SegurancaService);
 
-  if(authorizationService.isAccessTokenInvalido()){
-    authorizationService.limparAccessToken();
+  if(segurancaService.isAccessTokenInvalido()){
+    segurancaService.limparAccessToken();
     router.navigateByUrl('login');
   }else{
     req = req.clone({

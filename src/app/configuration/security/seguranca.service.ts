@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorizationService {
+export class SegurancaService {
 
   jwtPayload: any;
 

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthorizationService } from '../security/authorization.service';
-import { MenuService } from '../core/menu.service';
+
+import { SegurancaService } from './seguranca.service';
 
 @Injectable()
 export class SegurancaGuard implements CanActivate {
 
   constructor(
-    private authorizationService: AuthorizationService,
+    private segurancaService: SegurancaService,
     private router: Router
   ) {}
 
@@ -16,9 +16,9 @@ export class SegurancaGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if (this.authorizationService.isAccessTokenInvalido()) {
-        this.authorizationService.limparAccessToken();
-      } else if (next.data['roles']) {
+      if (this.segurancaService.isAccessTokenInvalido()) {
+        this.segurancaService.limparAccessToken();
+      } else if (next.data['authorities']) {
         this.router.navigate(['/nao-autorizado']);
         return false;
       }

@@ -10,7 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { ErrorHandlerService } from '../../configuration/core/error-handler.service';
 import { LoadingService } from '../../configuration/core/loading.service';
 import { MenuService } from '../../configuration/core/menu.service';
-import { AuthorizationService } from '../../configuration/security/authorization.service';
+import { SegurancaService } from '../../configuration/security/seguranca.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   formulario: FormControl = new FormControl();
 
   constructor(
-    private authorizationService: AuthorizationService,
+    private segurancaService: SegurancaService,
     private router: Router,
     private errorHandler: ErrorHandlerService,
     private loadingService: LoadingService,
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.messageService.add({severity:'warn', summary:'Aviso!', detail:'Informe o login e a senha'});
     }else{
       this.loadingService.show();
-      this.authorizationService.login(email.toUpperCase(), senha)
+      this.segurancaService.login(email.toUpperCase(), senha)
         .then(() => {
           this.router.navigate(['/principal']);
           this.loadingService.hide();

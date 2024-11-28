@@ -1,10 +1,10 @@
 <div class="col-12 md:col-12 menu-list">
     <app-menu-list [rotaPadrao]="rotaPadrao"
       [idEntidade]="idEntidade"
-      [permissaoNovo]="authorizationService.temPermissao('USUARIO_INCLUIR')"
-      [permissaoEditar]="authorizationService.temPermissao('USUARIO_ALTERAR')"
-      [permissaoConsultar]="authorizationService.temPermissao('USUARIO_CONSULTAR')"
-      [permissaoExcluir]="authorizationService.temPermissao('USUARIO_EXCLUIR')"
+      [permissaoNovo]="segurancaService.temPermissao('USUARIO_INCLUIR')"
+      [permissaoEditar]="segurancaService.temPermissao('USUARIO_ALTERAR')"
+      [permissaoConsultar]="segurancaService.temPermissao('USUARIO_CONSULTAR')"
+      [permissaoExcluir]="segurancaService.temPermissao('USUARIO_EXCLUIR')"
       [itemsBreadCrumb]="items">
     </app-menu-list>
   </div>

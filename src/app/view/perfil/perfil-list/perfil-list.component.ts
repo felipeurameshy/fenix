@@ -18,7 +18,7 @@ import { PerfilFiltro, PerfilService } from '../../../service/perfil.service';
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuListComponent } from '../../../components/menu-list/menu-list.component';
 import { LoadingService } from '../../../configuration/core/loading.service';
-import { AuthorizationService } from '../../../configuration/security/authorization.service';
+import { SegurancaService } from '../../../configuration/security/seguranca.service';
 
 @Component({
   selector: 'app-perfil-list',
@@ -37,7 +37,7 @@ export class PerfilListComponent extends BaseResourceListComponent<Perfil, Perfi
     errorHandler: ErrorHandlerService,
     router: Router,
     loadingService: LoadingService,
-    authorizationService: AuthorizationService) {
+    segurancaService: SegurancaService) {
     super(
       entidadeService,
       "/perfil",
@@ -50,7 +50,7 @@ export class PerfilListComponent extends BaseResourceListComponent<Perfil, Perfi
       errorHandler,
       router,
       loadingService,
-      authorizationService
+      segurancaService
     );
   }
 

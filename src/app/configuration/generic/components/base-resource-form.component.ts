@@ -7,10 +7,10 @@ import { MenuItem } from 'primeng/api/menuitem';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { BaseResourceModel } from '../model/base-resource.model';
-import { ICanDeactivate } from '../../guard/seguranca.deactivate.guard';
 import { BaseResourceService } from '../service/base-resource.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { LoadingService } from '../../core/loading.service';
+import { ICanDeactivate } from '../../security/seguranca.deactivate.guard';
 
 
 @Directive({
