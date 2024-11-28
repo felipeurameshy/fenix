@@ -1,0 +1,85 @@
+<div class="col-12 md:col-12">
+
+    <form #formulario="ngForm" autocomplete="off">
+  
+      <div class="formgrid grid">
+  
+        <div class="col-12 md:col-12 menu-form">
+          <app-menu-form
+            [rotaListar]="rotaListar"
+            [tipoMenu]="tipoMenu"
+            [formulario]="formulario"
+            (salvar)="salvar($event)"
+            (excluir)="excluir()"
+            [itemsBreadCrumb]="items">
+          </app-menu-form>
+        </div>
+  
+        <div class="col-12 md:col-12">
+  
+          <p-fieldset legend="Dados" class="fildset-formulario">
+  
+            <div class="formgrid grid">
+  
+              <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['nome'].invalid? 'campoInvalido':'campoValido'">
+                <label for="nome">Nome</label>
+                <input id="nome" class="inputfield w-full"
+                pInputText type="text" name="nome" [(ngModel)]="entidade.nome"
+                [disabled]="consulta" required minlength="3" maxlength="100">
+              </div>
+  
+              <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['email'].invalid? 'campoInvalido':'campoValido'">
+                <label for="email">E-mail</label>
+                <input id="email" class="inputfield w-full"
+                pInputText type="text" name="email" [(ngModel)]="entidade.email"
+                [disabled]="consulta" required minlength="3" maxlength="100">
+              </div>
+  
+              <div class="field col-12 md:col-2" [ngClass]="formularioInvalido  && formulario.form.controls['cpf'].invalid? 'campoInvalido':'campoValido'">
+                <label for="cpf">Cpf</label>
+                <div class="p-grid p-fluid">
+                  <p-inputMask id="cpf" class="inputfield w-full" name="cpf" [(ngModel)]="entidade.cpf"
+                  [required]="true" mask="999.999.999-99" [disabled]="consulta"></p-inputMask>
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-5">
+                <app-buscar-perfil [model]="entidade.perfil" [desabilitar]="consulta"
+                [validacao]="formularioInvalido && !entidade.perfil.id"
+                (seleciona)="selecionarPerfil($event)"></app-buscar-perfil>
+              </div>
+              
+              <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                <label>Status</label>
+                <div class="p-grid p-fluid">
+                  <p-dropdown [options]="tiposStatus" [filter]="false" placeholder="Selecione"
+                  [required]="true" name="status" [(ngModel)]="entidade.status"  [disabled]="consulta"></p-dropdown>
+                </div>
+              </div>
+  
+              <div class="field col-12 md:col-3" [ngClass]="formularioInvalido  && formulario.form.controls['senha'].invalid? 'campoInvalido':'campoValido'">
+                <label for="senha">Senha</label>
+                <input id="senha" class="inputfield w-full"
+                pPassword type="password" name="senha" [(ngModel)]="entidade.senha"
+                [disabled]="consulta" required minlength="4" maxlength="100">
+              </div>              
+  
+              <div class="field col-12 md:col-3" [ngClass]="formularioInvalido  && formulario.form.controls['senhaConfirma'].invalid? 'campoInvalido':'campoValido'">
+                <label for="senhaConfirma">Confirmar Senha</label>
+                <input id="senhaConfirma" class="inputfield w-full"
+                pPassword type="password" name="senhaConfirma" [(ngModel)]="senhaConfirma"
+                [disabled]="consulta" required minlength="4" maxlength="100">
+              </div>
+              
+  
+            </div>
+  
+          </p-fieldset>
+  
+        </div>
+  
+      </div>
+  
+    </form>
+  
+  </div>

@@ -1,0 +1,41 @@
+<div class="col-12 md:col-12">
+
+    <form #formulario="ngForm" autocomplete="off">
+  
+      <div class="formgrid grid">
+  
+        <div class="col-12 md:col-12 menu-form">
+          <app-menu-form
+            [rotaListar]="rotaListar"
+            [tipoMenu]="tipoMenu"
+            [formulario]="formulario"
+            (salvar)="salvar($event)"
+            (excluir)="excluir()"
+            [itemsBreadCrumb]="items">
+          </app-menu-form>
+        </div>
+  
+        <div class="col-12 md:col-12">
+  
+          <p-fieldset legend="Dados" class="fildset-formulario">
+  
+            <div class="formgrid grid">
+  
+              <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['descricao'].invalid? 'campoInvalido':'campoValido'">
+                <label for="descricao">Descrição<span class="campoObrigatorio">*</span></label>
+                <input id="descricao" class="inputfield w-full"
+                pInputText type="text" name="descricao" [(ngModel)]="entidade.descricao"
+                [disabled]="consulta" required minlength="3" maxlength="100" upperCase>
+              </div>
+  
+            </div>
+  
+          </p-fieldset>
+  
+        </div>
+  
+      </div>
+  
+    </form>
+  
+  </div>

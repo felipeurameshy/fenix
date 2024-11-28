@@ -1,0 +1,29 @@
+<div class="col-12 md:col-12">
+    <div class="ajustes-breadcrumb">
+        <p-breadcrumb [model]="items"></p-breadcrumb>
+    </div>
+</div>
+    
+<div class="col-12 md:col-12">
+  
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="gerarRelatorio()">             
+
+        <p-fieldset legend="Selecione o tipo de relatório">
+
+            <div class="formgrid grid">
+
+                <div class="field col-12 md:col-12">
+                    <div class="radio"><p-radioButton name="groupname" value="GERAL" [(ngModel)]="tipoRelatorio" label="Cadastro geral"></p-radioButton></div>
+                </div>
+
+                <div class="field col-12 md:col-12 margem-botao-relatorio">
+                    <button pButton icon="pi pi-file-pdf" type="submit" label="Gerar" class="ui-button-primary"></button>          
+                </div>  
+                
+            </div>
+        
+        </p-fieldset>
+
+    </form>
+    
+</div>

@@ -1,0 +1,19 @@
+<div class="ajustes-breadcrumb">
+    <p-breadcrumb [model]="itemsBreadCrumb"></p-breadcrumb>
+</div>
+
+@if(permissaoNovo){
+    <a pButton icon="pi pi-plus" class="p-button-primary botao-menu" (click)="novo()" pTooltip="Incluir"></a>
+}
+
+@if(permissaoEditar){
+    <a pButton icon="pi pi-pencil" class="p-button-success botao-menu" (click)="existeItemSelecionado('editar')" pTooltip="Alterar"></a>
+}
+
+@if(permissaoConsultar){
+    <a pButton icon="pi pi-eye" class="p-button-warning botao-menu" (click)="existeItemSelecionado('consultar')" pTooltip="Consultar"></a>
+}
+
+@if(permissaoExcluir){
+    <a pButton icon="pi pi-trash" class="p-button-danger botao-menu" (click)="existeItemSelecionado('excluir')" pTooltip="Excluir"></a>
+}

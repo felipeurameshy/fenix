@@ -1,0 +1,28 @@
+@if(!tipoServidor){
+  <div id="barraDeHmologacao" class=homologacao>
+    <label for="barraDeHmologacao">VERSÃO HOMOLOGAÇÃO</label>
+  </div>
+}
+
+<div class="col-12 md:col-12">
+  <app-menu></app-menu>
+</div>
+
+<div [ngClass]="{'mostrando-menu': mostrarMenu}">
+  <div class="col-12 md:col-12" [ngClass]="{'desabilitar-router': mostrarLoading}">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<p-toast position="bottom-right" [life]="10000"></p-toast>
+
+<p-confirmDialog header="Confirmação" icon="fa fa-question-circle" #confirmacao>
+    <p-footer>
+        <button type="button" pButton icon="fa fa-check" label="Sim" (click)="confirmacao.accept()"></button>
+        <button type="button" pButton icon="fa fa-times" label="Não" (click)="confirmacao.reject()"></button>
+    </p-footer>
+</p-confirmDialog>
+
+@if(mostrarLoading) {
+  <app-loading></app-loading>
+}

@@ -1,0 +1,69 @@
+<div class="p-grid p-fluid">
+
+  <div [class]="validacao ? 'campoInvalido':'campoValido'">
+    <label>{{label}}<span *ngIf="required" class="campoObrigatorio">*</span></label>
+    <div class="p-inputgroup">
+        <input pInputText type="text" name="{{name}}" [(ngModel)]="model.descricaoCompleta"
+        [disabled]="desabilitar" required="{{required}}" [readonly]="true">
+        <button type="button" [disabled]="desabilitar" (click)="showDialogEntidade()" pButton icon="pi pi-search"></button>
+    </div>
+  </div>
+
+    <p-dialog header="Lista de Perfis" [(visible)]="visibleDialogEntidade" [modal]="true" [style]="{width: '800px'}" [contentStyle]="{'max-height':'500px'}">
+
+      <div class="formgrid grid">
+
+        <div class="field col-12 md:col-2">
+          <label for="id">ID</label>
+          <input id="id" class="inputfield w-full"
+          pInputText type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="id" [(ngModel)]="filtro.id">
+        </div>
+
+        <div class="field col-12 md:col-10">
+          <label for="descricao">Descrição</label>
+          <input id="descricao" class="inputfield w-full"
+          pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" maxlength="100">
+        </div>
+
+        <div class="field col-12 md:col-12">
+            <button pButton type="button" label="Pesquisar" class="botao-filtro botao-menu" (click)="pesquisarEntidade()"></button>
+            <button pButton type="button" label="Limpar" class="botao-filtro botao-menu" (click)="limparFiltro()"></button>
+        </div>
+
+      </div>
+
+      <p-table [value]="selecionados" [paginator]="true" [rows]="10"
+          [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
+          [showCurrentPageReport]="true" currentPageReportTemplate="Total de registros: {totalRecords}"
+          [scrollable]="true">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width:10%">ID</th>
+                  <th style="width:90%">Descrição</th>
+                </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-entidade>
+              <tr (click)="selecionarEntidade(entidade)" (dblclick)="confirmarModal(entidadeSelecionada)" [class]="entidade.id == idSelecionado ?'linha-selecao-tabela':null">
+                  <td>{{entidade.id}}</td>
+                  <td>{{entidade.descricao}}</td>
+                </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="6">
+              Nenhum registro encontrado
+              </td>
+          </tr>
+          </ng-template>
+      </p-table>
+
+      <p-footer>
+          <div class="ui-dialog-buttonpane ui-helper-clearfix">
+              <button type="button" pButton icon="pi pi-times" (click)="cancelarModal()" label="Cancelar" class="ui-button-danger" ></button>
+              <button type="button" pButton icon="pi pi-check" (click)="confirmarModal(entidadeSelecionada)" label="Confirmar"></button>
+          </div>
+      </p-footer>
+
+    </p-dialog>
+
+</div>

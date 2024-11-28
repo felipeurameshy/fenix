@@ -1,0 +1,279 @@
+/* Inicio Cabeçalho */
+
+.navbar {
+  background-image: linear-gradient(150deg,#113562 0%,#113562 100%);
+  border-bottom: 5px solid linear-gradient(150deg,rgb(25,89,170) 0%,rgb(6,31,95) 100%);
+  padding: 2px 0;
+  position: fixed;
+  z-index: 9995;
+  width: 100%;
+  margin-top: -16px;
+  margin-left: -16px;
+  height: 50px;
+}
+
+.navbar-botao-menu {
+  color: #fff;
+  margin-left: 260px;
+}
+
+.navbar-botao-menu-colapse {
+  color: #fff;
+  margin-left: 20px;
+}
+
+.navbar-botao-icone-menu {
+  margin-top: 8px;
+  font-size: 22px;
+}
+
+.navbar-botao-sair {
+  color: #fff;
+  text-decoration: none;
+  text-align: right;
+  margin-right: 20px;
+  float: right;
+  margin-top: 11px;
+  font-size: 12px;
+}
+
+.navbar-versao {
+  color: #fff;
+  text-decoration: none;
+  text-align: right;
+  margin-right: 40px;
+  float: right;
+  margin-top: 16px;
+  font-size: 12px;
+}
+
+.navbar-nome-usuario {
+  margin-right: 20px;
+  margin-top: -5px;
+  color: #fff;
+  float: right;
+}
+
+.navbar-icone {
+  font-size: 18px;
+}
+
+/* Fim Cabeçalho */
+
+
+/* Inicio lateral */
+
+.navbar-menu {
+  background: #113562;
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  width: 244px;
+  margin: 0;
+  z-index: 9996;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.imagem-usuario {
+  border-radius: 10%;
+  width: 150px;
+  height: 35px;
+  margin-left: 30px;
+  margin-bottom: -5px;
+}
+
+.imagem-fundo {
+  margin-top: -5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f4f4f4;
+  margin-left: -8px;
+}
+
+.label-menu-nome {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  float: left;
+  color: #fff;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin-top: 10px;
+  margin-left: -6px;
+}
+
+::-webkit-scrollbar {
+  width:  7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #3b3b3b;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #666;
+}
+
+.navbar-menuitem {
+  padding: 0px;
+  list-style: none;
+}
+
+.navbar-menuitem a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 10px;
+  padding: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+.navbar-menuitem a:hover {
+  background-color: #fff;
+  display: block;
+  opacity: 0.4;
+  color: #000000;
+  font-weight: bold;
+}
+
+.navbar-menuitem-ativo {
+  background-color: #fff;
+  margin-left: 0px;
+  margin-right: 10px;
+  padding: 0px;
+  border-radius: 3px;
+}
+
+.navbar-menuitem-ativo a {
+  color: #3c4858;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.navbar-menu-ativo {
+  background-color: #fff;
+  display: block;
+  font-weight: bold;
+  color: #3c4858 !important;
+}
+
+.label-menu {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+.label-menu:hover {
+  background-color: #fff;
+  display: block;
+  opacity: 0.4;
+  color: #000000;
+  font-weight: bold;
+}
+
+.navbar-grupo-menu ul {
+  margin-bottom: -5px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.navbar-grupo-menu input:checked ~ ul {
+  height: auto;
+  max-height: 100%;
+  transform: all;
+  list-style: none;
+}
+
+.navbar-grupo-menu input {
+  display: none;
+}
+
+.navbar-grupo-submenu {
+  margin-left: -10px;
+}
+
+/*
+    Nome do sistema
+*/
+.navbar-nome-sistema {
+  background: #fff;
+  padding-top: 5px;
+  padding-bottom: 0;
+  margin-left: -20px;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*
+    Corpo do aplicativo
+*/
+.conteudo {
+  padding-left: 230px;
+  padding-top: 50px;
+}
+
+.conteudo-colapse {
+  margin-left: 0px;
+  padding-top: 50px;
+}
+
+i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* Fim lateral */
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  font-size: 0.9em;
+  background: #fff;
+  padding: 10px;
+  border-top: 1px solid #d2d6de;
+  margin-left: 120px;
+}
+
+.footer-colapse {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  font-size: 0.9em;
+  background: #fff;
+  padding: 10px;
+  border-top: 1px solid #d2d6de;
+}

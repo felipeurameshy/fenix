@@ -1,0 +1,50 @@
+<div class="login">
+
+    <form #formulario="ngForm" autocomplete="off">
+
+        <div class="p-fluid">
+
+            <div class="pages-body login-page flex flex-column">
+
+                <div class="align-self-center mt-auto mb-auto">
+
+                    <div class="col-12 md:col-12 pages-panel card flex flex-column">
+                        
+                        <img src="assets/images/logo-bullla.svg" class="imagem-logo" />
+
+                        <h2 class="login-subtitulo">CADASTRO ÚNICO</h2>
+
+                        <div class="input-panel flex flex-column">
+
+                            <div class="login-usuario">
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                                    <input pInputText type="text" name="login" placeholder="Login" ngModel #email>
+                                </div>
+                            </div>
+
+                            <div class="login-senha">
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                                    <input pInputText type="password" name="senha" placeholder="Senha" ngModel #senha>
+                                </div>
+                            </div>
+
+                            <div class="login-botao">
+                                <button pButton type="submit" label="Login" [disabled]="!formulario.valid"
+                                    (click)="login(email.value, senha.value); senha.value=''; "></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
