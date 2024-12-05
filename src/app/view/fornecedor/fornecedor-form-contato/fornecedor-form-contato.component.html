@@ -1,0 +1,101 @@
+
+<div class="formgrid grid">
+
+    <div class="field col-12 md:col-12">
+        <button label="Adicionar" pButton type="button" style="float: right"
+            icon="pi pi-plus" class="p-button-primary botao-menu alinhamento" 
+            (click)="abrirDialog()" [disabled]="consulta">
+        </button>
+    </div>
+
+    <div class="field col-12 md:col-12">
+        <p-table [value]="entidade.contatos">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 20%">Tipo</th>
+                    <th style="width: 50%">Valor</th>
+                    <th style="width: 10%">Principal</th>
+                    <th style="width: 20%">Status</th>
+                    <th style="width: 7em"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-contato let-i="rowIndex">
+                <tr (dblclick)="selecionarItemTabela(contato)">
+                    <td>{{contato.tipo}}</td>
+                    <td>{{contato.valor}}</td>
+                    <td>{{contato.principal ? "SIM":"NÃO"}}</td>
+                    <td>{{contato.status}}</td>
+                    <td>
+                        <div class="field col-12 md:col-12" [hidden]="consulta">
+                            <a pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom"
+                                class="p-button-danger margem-menu" (click)="remover(contato)">
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="12">
+                    Nenhum registro encontrado
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>
+
+<p-dialog header="{{tituloDialog}}" [(visible)]="visibleDialog" [modal]="true" [style]="{width: '1000px', height:'500px'}" [contentStyle]="{'max-height':'500px'}" (onHide)="fecharDialog()">
+
+    <p-fieldset legend="Dados" class="fildset-formulario">
+        <div class="field col-12 md:col-12">
+
+            <div class="formgrid grid">   
+                
+                <div class="field col-12 md:col-2">
+                    <label for="contatoSelecionadoTipo">Tipo<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                    <p-dropdown [options]="tiposContato" [filter]="false" placeholder="Selecione" appendTo="body"
+                    inputId="contatoSelecionadoTipo" name="contatoSelecionadoTipo" [(ngModel)]="contatoSelecionado.tipo" 
+                    [required]="true" [disabled]="consulta"></p-dropdown>
+                    </div>
+                </div>
+
+                <div class="field col-12 md:col-2">
+                    <label for="contatoSelecionadoStatus">Status<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                    <p-dropdown [options]="tiposStatus" [filter]="false" placeholder="Selecione" appendTo="body"
+                    inputId="contatoSelecionadoStatus" name="contatoSelecionadoStatus" [(ngModel)]="contatoSelecionado.status" 
+                    [required]="true" [disabled]="consulta"></p-dropdown>
+                    </div>
+                </div>
+
+                <div class="field col-12 md:col-7">
+                    <label for="contatoSelecionadoValor">Valor<span class="campoObrigatorio">*</span></label>
+                    <input id="contatoSelecionadoValor" class="inputfield w-full"
+                    pInputText type="text" name="contatoSelecionadoValor" [(ngModel)]="contatoSelecionado.valor"
+                    [disabled]="consulta" maxlength="120" required>
+                </div>
+
+                <div class="field col-12 md:col-1">
+                    <label style="margin-left: 20px;" for="contatoSelecionadoPrincipal">Principal<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid" style="margin-left: 20px;">
+                      <p-inputSwitch id="contatoSelecionadoPrincipal" name="contatoSelecionadoPrincipal" 
+                      [(ngModel)]="contatoSelecionado.principal"></p-inputSwitch>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </p-fieldset>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="pi pi-times" (click)="fecharDialog()" label="Cancelar" class="p-button-danger" style="width: 130px;"></button>
+            <button type="button" pButton icon="pi pi-check" (click)="adicionar(contatoSelecionado)" label="Salvar" style="width: 130px;"></button>
+        </div>
+    </p-footer>
+
+</p-dialog>

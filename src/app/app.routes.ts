@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 
-import { SegurancaGuard } from './configuration/security/seguranca.guard';
-import { SegurancaDeactivateGuard } from './configuration/security/seguranca.deactivate.guard';
+import { SegurancaGuard } from './configuration/guard/seguranca.guard';
+import { SegurancaDeactivateGuard } from './configuration/guard/seguranca.deactivate.guard';
 import { LoginComponent } from './components/login/login.component';
 import { AcessoNaoAutorizadoComponent } from './components/acesso-nao-autorizado/acesso-nao-autorizado.component';
 import { PaginaPrincipalComponent } from './components/pagina-principal/pagina-principal.component';
 import { PaginaNaoEncontradaComponent } from './components/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { AuthorizedComponent } from './configuration/security/authorized/authorized.component';
 import { PerfilFormComponent } from './view/perfil/perfil-form/perfil-form.component';
 import { PerfilRelatorioComponent } from './view/perfil/perfil-relatorio/perfil-relatorio.component';
 import { PerfilListComponent } from './view/perfil/perfil-list/perfil-list.component';
@@ -16,8 +17,128 @@ import { UsuarioListComponent } from './view/usuario/usuario-list/usuario-list.c
 import { UsuarioRelatorioComponent } from './view/usuario/usuario-relatorio/usuario-relatorio.component';
 import { SecaoFormComponent } from './view/secao/secao-form/secao-form.component';
 import { SecaoListComponent } from './view/secao/secao-list/secao-list.component';
+import { ClienteFormComponent } from './view/cliente/cliente-form/cliente-form.component';
+import { ClienteListComponent } from './view/cliente/cliente-list/cliente-list.component';
+import { CategoriaListComponent } from './view/categoria/categoria-list/categoria-list.component';
+import { CategoriaFormComponent } from './view/categoria/categoria-form/categoria-form.component';
+import { DespesaFormComponent } from './view/despesa/despesa-form/despesa-form.component';
+import { DespesaListComponent } from './view/despesa/despesa-list/despesa-list.component';;
+import { FornecedorListComponent } from './view/fornecedor/fornecedor-list/fornecedor-list.component';
+import { FornecedorFormComponent } from './view/fornecedor/fornecedor-form/fornecedor-form.component';
 
 export const routes: Routes = [
+
+  //Categoria
+  {
+    path: 'categoria/novo',
+    component: CategoriaFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['CATEGORIA_INCLUIR']}
+  },
+  {
+    path: 'categoria/listar',
+    component: CategoriaListComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['CATEGORIA_CONSULTAR']}
+  },
+  {
+    path: 'categoria/editar/:id',
+    component: CategoriaFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['CATEGORIA_ALTERAR']}
+  },
+  {
+    path: 'categoria/:id/:consulta/:tipo',
+    component: CategoriaFormComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['CATEGORIA_CONSULTAR']}
+  },
+
+  //Cliente
+  {
+    path: 'cliente/novo',
+    component: ClienteFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['CLIENTE_INCLUIR']}
+  },
+  {
+    path: 'cliente/listar',
+    component: ClienteListComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['CLIENTE_CONSULTAR']}
+  },
+  {
+    path: 'cliente/editar/:id',
+    component: ClienteFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['CLIENTE_ALTERAR']}
+  },
+  {
+    path: 'cliente/:id/:consulta/:tipo',
+    component: ClienteFormComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['CLIENTE_CONSULTAR']}
+  },
+
+  //Despesa
+  {
+    path: 'despesa/novo',
+    component: DespesaFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['DESPESA_INCLUIR']}
+  },
+  {
+    path: 'despesa/listar',
+    component: DespesaListComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['DESPESA_CONSULTAR']}
+  },
+  {
+    path: 'despesa/editar/:id',
+    component: DespesaFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['DESPESA_ALTERAR']}
+  },
+  {
+    path: 'despesa/:id/:consulta/:tipo',
+    component: DespesaFormComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['DESPESA_CONSULTAR']}
+  },
+
+  //Fornecedor
+  {
+    path: 'fornecedor/novo',
+    component: FornecedorFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['FORNECEDOR_INCLUIR']}
+  },
+  {
+    path: 'fornecedor/listar',
+    component: FornecedorListComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['FORNECEDOR_CONSULTAR']}
+  },
+  {
+    path: 'fornecedor/editar/:id',
+    component: FornecedorFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['FORNECEDOR_ALTERAR']}
+  },
+  {
+    path: 'fornecedor/:id/:consulta/:tipo',
+    component: FornecedorFormComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['FORNECEDOR_CONSULTAR']}
+  },  
 
   //Perfil
   {
@@ -156,6 +277,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'authorized',
+    component: AuthorizedComponent,
   },
   {
     path: 'principal',

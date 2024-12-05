@@ -3,7 +3,7 @@
       [idEntidade]="idEntidade"
       [permissaoNovo]="false"
       [permissaoEditar]="false"
-      [permissaoConsultar]="segurancaService.temPermissao('PERMISSAO_CONSULTAR')"
+      [permissaoConsultar]="authorizationService.temPermissao('PERMISSAO_CONSULTAR')"
       [permissaoExcluir]="false"
       [itemsBreadCrumb]="items">
     </app-menu-list>

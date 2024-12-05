@@ -8,16 +8,19 @@ import { environment } from '../../../environments/environment';
 })
 export class SystemService {
 
+  logoutUrl = environment.logoutUrl;
+  baseUrl = environment.apiUrl;
+
   constructor(
     private http: HttpClient,
   ) {}
 
   public validarTipoServidor() {
-    return firstValueFrom(this.http.get<any>(`${environment.apiUrl}/system/validar-tipo-servidor`));
+    return firstValueFrom(this.http.get<any>(`${this.baseUrl}/system/validar-tipo-servidor`));
   }
 
   public versaoApi() {
-    return firstValueFrom(this.http.get<any>(`${environment.apiUrl}/system/versao-api`));
+    return firstValueFrom(this.http.get<any>(`${this.baseUrl}/system/versao-api`));
   }
   
 }

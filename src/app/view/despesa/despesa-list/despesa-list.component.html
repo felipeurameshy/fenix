@@ -1,0 +1,74 @@
+<div class="col-12 md:col-12 menu-list">
+    <app-menu-list [rotaPadrao]="rotaPadrao"
+      [idEntidade]="idEntidade"
+      [permissaoNovo]="authorizationService.temPermissao('CATALOGO_INCLUIR')"
+      [permissaoEditar]="authorizationService.temPermissao('CATALOGO_ALTERAR')"
+      [permissaoConsultar]="authorizationService.temPermissao('CATALOGO_CONSULTAR')"
+      [permissaoExcluir]="authorizationService.temPermissao('CATALOGO_EXCLUIR')"
+      [itemsBreadCrumb]="items">
+    </app-menu-list>
+  </div>
+  
+  <div class="col-12 md:col-12">
+  
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+  
+      <p-fieldset legend="Filtro" [toggleable]="true" [collapsed]="true" class="fildset-filtro">
+  
+        <div class="formgrid grid">
+  
+          <div class="field col-12 md:col-2">
+            <label for="id">ID</label>
+            <input id="id" class="inputfield w-full"
+            pInputText type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="id" [(ngModel)]="filtro.id">
+          </div>
+  
+          <div class="field col-12 md:col-10">
+            <label for="descricao">Descrição</label>
+            <input id="descricao" class="inputfield w-full"
+             pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" maxlength="100">
+          </div>
+  
+          <div class="field col-12 md:col-12">
+            <button pButton type="submit" label="Pesquisar" class="botao-filtro botao-menu"></button>
+            <button pButton type="button" label="Limpar" class="botao-filtro botao-menu" (click)="limparFiltro()"></button>
+          </div>
+  
+        </div>
+  
+      </p-fieldset>
+  
+    </form>
+  
+  </div>
+  
+  <div class="col-12 md:col-12">
+    <p-table [value]="selecionados" [paginator]="true" [rows]="filtro.itensPorPagina"
+          [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #tabela
+          [showCurrentPageReport]="true" currentPageReportTemplate="Total de registros: {totalRecords}"
+          [rowsPerPageOptions]="[10,15,20,25,30]">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width:10%">ID</th>
+              <th style="width:10%">Data</th>              
+              <th style="width:65%">Categoria</th>
+              <th style="width:15%">Valor Total</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-entidade>
+          <tr (dblclick)="alterarEntidade(entidade)" (click)="selecionarEntidade(entidade)" [class]="entidade.id == idEntidade ?'linha-selecao-tabela':null">
+              <td>{{entidade.id}}</td>
+              <td>{{entidade.dataDespesa | date:'dd/MM/yyyy'}}</td>
+              <td>{{entidade.categoria?.descricao}}</td> 
+              <td>{{entidade.valorTotal | currency:'BRL'}}</td>             
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">
+            Nenhum registro encontrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>  

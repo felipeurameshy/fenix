@@ -38,6 +38,12 @@ export class UsuarioFormComponent extends BaseResourceFormComponent<Usuario> {
 
   public senhaConfirma!: string;
   
+  public tipos = [
+    {label: 'NORMAL', value:'NORMAL'},
+    {label: 'ANALISTA', value:'ANALISTA'},
+    {label: 'ADMINISTRADOR', value:'ADMINISTRADOR'}
+  ]
+  
   public tiposStatus = [
     {label: 'ATIVO', value:'ATIVO'},
     {label: 'INATIVO', value:'INATIVO'}

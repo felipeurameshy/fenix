@@ -6,7 +6,7 @@ import { ErrorHandlerService } from "../../core/error-handler.service";
 import { BaseResourceModel } from "../model/base-resource.model";
 import { BaseResourceService } from "../service/base-resource.service";
 import { LoadingService } from "../../core/loading.service";
-import { SegurancaService } from "../../security/seguranca.service";
+import { AuthorizationService } from "../../security/authorization.service";
 
 @Directive()
 export abstract class BaseResourceListComponent<T extends BaseResourceModel, F> implements OnInit {
@@ -31,7 +31,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel, F> 
     public errorHandler: ErrorHandlerService,
     public router: Router,
     public loadingService: LoadingService,
-    public segurancaService: SegurancaService
+    public authorizationService: AuthorizationService
   ) {}
 
   ngOnInit() {

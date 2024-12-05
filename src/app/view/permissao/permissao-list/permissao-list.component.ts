@@ -18,7 +18,7 @@ import { PermissaoFiltro, PermissaoService } from '../../../service/permissao.se
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuListComponent } from '../../../components/menu-list/menu-list.component';
 import { LoadingService } from '../../../configuration/core/loading.service';
-import { SegurancaService } from '../../../configuration/security/seguranca.service';
+import { AuthorizationService } from '../../../configuration/security/authorization.service';
 
 @Component({
   selector: 'app-permissao-list',
@@ -37,7 +37,7 @@ export class PermissaoListComponent extends BaseResourceListComponent<Permissao,
     errorHandler: ErrorHandlerService,
     router: Router,
     loadingService: LoadingService,
-    segurancaService: SegurancaService) {
+    authorizationService: AuthorizationService) {
     super(
       entidadeService,
       "/permissao",
@@ -50,7 +50,7 @@ export class PermissaoListComponent extends BaseResourceListComponent<Permissao,
       errorHandler,
       router,
       loadingService,
-      segurancaService
+      authorizationService
     );
   }
 

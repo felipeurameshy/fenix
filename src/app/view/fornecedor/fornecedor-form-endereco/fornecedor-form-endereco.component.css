@@ -1,0 +1,16 @@
+.formatacao-endereco label{
+    font-weight: 700;
+    margin-right: 5px;    
+}
+
+.margem-botao {
+    margin-right: 5px;
+}
+
+.alinhamento-botao-adicionar {
+    margin-top: -10px;    
+}
+
+.margin-botao-adicionar {
+    padding-bottom: 25px;
+}

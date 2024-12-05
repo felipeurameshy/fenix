@@ -26,11 +26,13 @@ export class ErrorHandlerService {
     }else if (errorResponse instanceof HttpErrorResponse && errorResponse.status >= 400 && errorResponse.status <= 499) {
       
       msg = "";
-      console.log(errorResponse.error)                 
-      msg = errorResponse.error;
+      errorResponse.error.forEach(function (value: any) {  
+        msg = value.mensagem + ", " + msg;
+      });                     
+      msg = msg.substr(0,msg.length - 2);
       
     } else {
-      msg = errorResponse.error.message;
+      msg = errorResponse
     }
 
     this.messageService.add({severity:'error', summary:'Erro', detail: msg });

@@ -1,7 +1,17 @@
 export const environment = {
   production: false,
+  redirectURI: 'http://localhost:4200/authorized',
+  authorizationCallbackUrl: 'http://localhost:8080/fenix-api/oauth2/authorize',
+  tokenUrl: "http://localhost:8080/fenix-api/oauth2/token",
+  logoutUrl: "http://localhost:8080/fenix-api/logout",
+  logoutRedirectUrl: "http://localhost:4200/login",
   apiUrl: 'http://localhost:8080/fenix-api/api',
-  webUrl: 'http://localhost:4200',
   tokenAllowedDomains: ['http://localhost:8080'],
   tokenDisallowedRoutes: ['http://localhost:8080/fenix-api/oauth2/token'],
+  responseType: 'code',
+  clientId: 'client-dev',
+  secret: 'mangacomsal', 
+  scope: 'openid',
+  tokenRevokeUrl: "http://localhost:8080/fenix-api/oauth2/revoke",
+  responseMode: 'form_post',
 };

@@ -3,96 +3,168 @@
   <nav class="navbar">
     <div class="formgrid grid">
       <div class="col-12">
-        <a href="javascript:;" [ngClass]="{'navbar-botao-menu': mostrarMenu, 'navbar-botao-menu-colapse':!mostrarMenu}" (click)="mostrarMenuLateral()"><i class="pi pi-bars navbar-botao-icone-menu"></i></a>
-        <a href="javascript:;" class="navbar-botao-sair" (click)="logout()"><i class="pi pi-sign-in"></i>SAIR</a>
+        <a href="javascript:;" class="navbar-botao-menu" (click)="mostrarMenuLateral()"><i class="pi pi-bars navbar-botao-icone-menu"></i></a>
+        <a href="javascript:;" class="navbar-botao-sair" (click)="logout()"><i class="pi pi-sign-in"></i>Sair</a>
+        <span class="navbar-versao">USUÁRIO: {{ authorizationService.jwtPayload?.nome }}</span>      
         <span class="navbar-versao">VERSÃO API: {{versaoApi}}</span>
-        <a href="javascript:;" class="navbar-botao-sair"><i class="pi pi-user"></i>USUÁRIO: {{ segurancaService.jwtPayload?.nome }}</a>
       </div>
     </div>
   </nav>
-
-  <!--Menu lateral -->
-  <div>
-    <ul class="navbar-menu" [hidden]="!mostrarMenu">
-
-      <div class="imagem-fundo">
-        <div>
-          <a class="col-12" routerLink="/principal" (click)="navegar('/principal')">
-            <img src="assets/images/logo.svg" class="imagem-usuario"/>
-          </a>
-        </div>
-      </div>
-
-      @if(segurancaService.temPermissao('MENU_CADASTRO')){
-        <div class="navbar-grupo-menu">
-          <input type="checkbox" id="cadastro"/>
-          <label class="label-menu cursor-pointer" for="cadastro" ><i class="pi pi-book" aria-hidden="true"></i>Cadastro</label>
-          <ul>
-
-            @if(segurancaService.temPermissao('CATEGORIA_CONSULTAR')){
-              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
-                <a (click)="navegar('/categoria/listar')"><i class="pi pi-building" aria-hidden="true"></i>Categoria</a>
-              </li>
-            }
-          
-          </ul>
-        </div>
-      }
-
-      @if(segurancaService.temPermissao('MENU_MOVIMENTACAO')){
-        <div class="navbar-grupo-menu">
-          <input type="checkbox" id="movimentacao"/>
-          <label class="label-menu cursor-pointer" for="movimentacao" ><i class="pi pi-book" aria-hidden="true"></i>Movimentação</label>
-          <ul>
-
-            
-          
-          </ul>
-        </div>
-      }
-
-      @if(segurancaService.temPermissao('MENU_FINANCEIRO')){
-        <div class="navbar-grupo-menu">
-          <input type="checkbox" id="financeiro"/>
-          <label class="label-menu cursor-pointer" for="financeiro" ><i class="pi pi-book" aria-hidden="true"></i>Financeiro</label>
-          <ul>
-
-            
-          
-          </ul>
-        </div>
-      }
-
-      @if(segurancaService.temPermissao('MENU_SEGURANCA')) {
-        <div class="navbar-grupo-menu">
-          <input type="checkbox" id="seguranca"/>
-          <label class="label-menu cursor-pointer" for="seguranca"><i class="pi pi-lock" aria-hidden="true"></i>Segurança</label>
-          <ul>
-  
-            @if(segurancaService.temPermissao('PERFIL_CONSULTAR')) {
-              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
-                <a (click)="navegar('/perfil/listar')"><i class="fa-solid fa-globe"></i>Perfil</a>
-              </li>
-            }
-    
-            @if(segurancaService.temPermissao('PERMISSAO_CONSULTAR')) {
-              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
-                <a (click)="navegar('/permissao/listar')"><i class="fa-solid fa-key"></i>Permissão</a>
-              </li>
-            }
-  
-            @if(segurancaService.temPermissao('USUARIO_CONSULTAR')) {
-              <li class="navbar-menuitem cursor-pointer" routerLinkActive="navbar-menuitem-ativo">
-                <a (click)="navegar('/usuario/listar')"><i class="pi pi-users"></i>Usuário</a>
-              </li>
-            }
-    
-          </ul>
-        </div>
-      }
-
-
-
-    </ul>
-  </div>
 }
+
+<!--Menu lateral -->
+<div>
+  <ul class="navbar-menu" [hidden]="!mostrarMenu">
+
+    <div class="imagem-fundo">
+      <div>
+        <a class="col-12" routerLink="/principal" (click)="navegar('/principal')">
+          <img src="assets/images/logo.png" class="imagem-usuario" style="background-color: aliceblue;"/>
+        </a>
+      </div>
+    </div>
+
+    @if(authorizationService.temPermissao('MENU_DASHBOARD')) {
+      <div>
+        <li class="label-menu" routerLinkActive="navbar-menuitem-ativo">
+          <a (click)="navegar('/dashboard/geral')"><i class="pi pi-chart-line"></i>Dashboard</a>
+        </li>
+      </div>
+    }
+
+    @if(authorizationService.temPermissao('MENU_CADASTRO')) {
+      <div class="navbar-grupo-menu">
+        <input type="checkbox" id="cadastro"/>
+        <label class="label-menu" for="cadastro"><i class="pi pi-book"></i>Cadastro</label>
+        <ul>
+
+          @if(authorizationService.temPermissao('CATALOGO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/catalogo/listar')"><i class="fa-solid fa-receipt"></i>Catálogo</a>
+            </li>            
+          }
+
+          @if(authorizationService.temPermissao('CATEGORIA_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/categoria/listar')"><i class="fa-solid fa-layer-group"></i>Categoria</a>
+            </li>            
+          }                  
+
+          @if(authorizationService.temPermissao('CLIENTE_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/cliente/listar')"><i class="fa-solid fa-user"></i>Cliente</a>
+            </li>            
+          }
+
+          @if(authorizationService.temPermissao('FORNECEDOR_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/fornecedor/listar')"><i class="fa-solid fa-truck-front"></i>Fornecedor</a>
+            </li>            
+          }
+
+          @if(authorizationService.temPermissao('PRODUTO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/produto/listar')"><i class="fa-solid fa-shirt"></i>Produto</a>
+            </li>            
+          }
+
+          @if(authorizationService.temPermissao('SECAO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/secao/listar')"><i class="fa-solid fa-grip"></i>Seção</a>
+            </li>            
+          }
+
+        </ul>
+      </div>
+    }
+
+    @if(authorizationService.temPermissao('MENU_MOVIMENTACAO')) {
+      <div class="navbar-grupo-menu">
+        <input type="checkbox" id="movimentacao"/>
+        <label class="label-menu" for="movimentacao"><i class="fa-solid fa-repeat"></i>Movimentação</label>
+        <ul>
+
+          @if(authorizationService.temPermissao('ENTRADA_NF_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/entrada-nf/listar')"><i class="fa-solid fa-file-invoice"></i>Entrada NF</a>
+            </li>            
+          }
+
+          @if(authorizationService.temPermissao('PEDIDO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/pedido/listar')"><i class="fa-solid fa-cart-shopping"></i>Pedido</a>
+            </li>            
+          }
+
+        </ul>
+      </div>
+    }
+
+    @if(authorizationService.temPermissao('MENU_FINANCEIRO')) {
+      <div class="navbar-grupo-menu">
+        <input type="checkbox" id="financeiro"/>
+        <label class="label-menu" for="financeiro"><i class="fa-solid fa-money-bill"></i>Financeiro</label>
+        <ul>
+
+          @if(authorizationService.temPermissao('DESPESA_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/despesa/listar')"><i class="fa-solid fa-right-from-bracket"></i>Despesa</a>
+            </li>            
+          }
+
+        </ul>
+      </div>
+    }
+
+    @if(authorizationService.temPermissao('MENU_SEGURANCA')) {
+      <div class="navbar-grupo-menu">
+        <input type="checkbox" id="seguranca"/>
+        <label class="label-menu" for="seguranca"><i class="pi pi-lock" aria-hidden="true"></i>Segurança</label>
+        <ul>
+
+          @if(authorizationService.temPermissao('PERFIL_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/perfil/listar')"><i class="fa-solid fa-globe"></i>Perfil</a>
+            </li>
+          }
+  
+          @if(authorizationService.temPermissao('PERMISSAO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/permissao/listar')"><i class="fa-solid fa-key"></i>Permissão</a>
+            </li>
+          }
+
+          @if(authorizationService.temPermissao('USUARIO_CONSULTAR')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/usuario/listar')"><i class="pi pi-users"></i>Usuário</a>
+            </li>
+          }
+  
+        </ul>
+      </div>
+    }
+  
+    @if(authorizationService.temPermissao('MENU_RELATORIO')) {
+      <div class="navbar-grupo-menu">
+        <input type="checkbox" id="relatorio"/>
+        <label class="label-menu" for="relatorio"><i class="pi pi-file-pdf" aria-hidden="true"></i>Relatórios</label>
+        <ul>
+
+          @if(authorizationService.temPermissao('PERFIL_RELATORIO')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/perfil/relatorio')"><i class="fa-solid fa-globe"></i>Perfil</a>
+            </li>
+          }
+  
+          @if(authorizationService.temPermissao('USUARIO_RELATORIO')) {
+            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
+              <a (click)="navegar('/usuario/relatorio')"><i class="pi pi-users"></i>Usuário</a>
+            </li>
+          }
+  
+        </ul>
+      </div>
+    }
+
+  </ul>
+</div>

@@ -1,384 +1,384 @@
 body {
-    background-color: #f4f4f4;
-  }
-  
-  /* Inicio Campos Invalidos  */
-  .campoInvalido input{
-    border: 1px solid red !important;
-  }
-  
-  .campoInvalido label{
-    color: red !important;
-  }
-  
-  .campoInvalido textarea{
-    border: 1px solid red !important;
-  }
-  
-  .campoInvalido .p-dropdown{
-    border: 1px solid red !important;
-    padding: 0px !important;
-  }
-  
-  /* Fim Campos Invalidos  */
-  
-  /* Inicio Campos Validos  */
-  .campoValido input{
-    color: #222222 !important;
-    transition: .2s !important;
-  }
-  
-  .campoValido label{
-    color: #495057 !important;
-  }
-  
-  .campoValido textarea{
-    color: #222222 !important;
-    transition: .2s !important;
-  }
-  
-  .campoInvalido .p-dropdown{
-    color: #222222;
-    transition: .2s;
-  }
-  
-  .campoObrigatorio{
-    color: red !important;
-  }
-  
-  /* Fim Campos validos  */
-  
-  .botao-menu {
-    height: 30px;
-    margin-right: 5px !important;
-  }
-  
-  .margem-botao-relatorio {
-    margin-top: 20px;
-    width: 95px !important;
-  }
-  
-  .botao-filtro {
-    width: 120px !important;
-    margin-top: 5px;
-  }
-  
-  .linha-selecao-tabela {
-    background-color: #1e94d2 !important;
-    color: #FFF !important;
-    font-weight: 600;
-  }
-  
-  .menu-list {
-    margin-bottom: -15px;
-  }
-  
-  .menu-form {
-    margin-bottom: -10px;
-  }
-  
-  .radio {
-    margin-bottom: 10px;
-  }
-  
-  .ajustes-breadcrumb {
-    padding-top: 10px;
-    padding-bottom: 8px;
-  }
-  
-  /* sobreescrita breadcrumb */
-  body .p-breadcrumb {
-    background-color: #ffffff;
-    border: 1px solid #c8c8c8;
-    padding: 5px;
-  }
-  
-  /* sobreescrita da fonte padrão*/
-  body .p-component {
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
-    text-decoration: none;
-    font-size: 13px;
-  }
-  
-  /* sobreescrita do botão*/
-  body .p-button.p-button-icon-only {
-    width: 2.357rem;
-    padding: 6px 6px;
-  }
-  
-  /* sobreescrita dos icones*/
-  body .pi {
-    font-size: 12px;
-  }
-  
-  /* sobreescrita dos fieldset*/
-  .fildset-filtro .p-fieldset {
-    margin-top: 12px;
-    border: 1px solid #dee2e6;
-    background: #ffffff;
-    color: #495057;
-    border-radius: 3px;
-  }
-  
-  /* sobreescrita dos fieldset*/
-  .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a{
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-  }
-  
-  /* sobreescrita dos fieldset*/
-  .fildset-formulario .p-fieldset {
-    margin-top: 16px;
-    border: 1px solid #dee2e6;
-    background: #ffffff;
-    color: #495057;
-    border-radius: 3px;
-  }
-  
-  /* sobreescrita dos fieldset*/
-  .p-fieldset .p-fieldset-legend {
-    padding: 7px 10px 7px 10px;
-    border: 1px solid #dee2e6;
-    color: #024103d6;
-    background: #f8f9fa;
-    font-weight: 700;
-    border-radius: 3px;
-  }
-  
-  /* sobreescrita dos fieldset*/
-  .p-fieldset .p-fieldset-content {
-    padding: 8px;
-  }
-  
-  /* sobreescrita do field*/
-  .field {
-    margin-bottom: 4px;
-  }
-  
-  /* sobreescrita de label*/
-  .field > label {
-    display: inline-block;
-    margin-bottom: 1px;
-  }
-  
-  /* sobreescrita dos inputs padrão */
-  body .p-inputtext {
-    font-size: 13px;
-    color: #333333;
-    background: #ffffff;
-    padding: 5px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border: 1px solid #a6a6a6;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
-  
-  /* sobreescrita do botões padrão*/
-  body .ui-button.ui-button-text-only .ui-button-text {
-    padding: 4px;
-    font-weight: bold;
-  }
-  
-  /* sobreescrita do slide button */
-  .p-inputswitch-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-top: 4px;
-    height: 1.50rem;
-  }
-  
-  .p-inputswitch .p-inputswitch-slider:before {
-    background: #ffffff;
-    width: 1.0rem;
-    height: 1.0rem;
-    left: 0.25rem;
-    margin-top: -0.525rem;
-    border-radius: 50%;
-    transition-duration: 0.2s;
-  }
-  
-  /* Inicio configuração tabela */
-  
-  body .p-datatable .p-datatable-thead  > tr > th {
-    text-align: left;
-    padding: 5px;
-    border: 1px solid #e9ecef;
-    border-width: 1px 1px 1px 1px;
-    font-weight: 700;
-    color: #333333;
-    background: #f4f4f4;
-    transition: box-shadow 0.2s;
-  }
-  
-  body .p-datatable .p-datatable-tbody > tr > td {
-    padding: 5px;
-    text-align: left;
-    border: 1px solid #e9ecef;
-    border-width: 1px 1px 1px 1px;
-  }
-  
-  body .p-table .p-table-tbody > tr > td {
-    padding: 3px;
-  }
-  
-  .p-paginator .p-dropdown .p-dropdown-panel ul li:last-child {
-    float: right;
-  }
-  
-  .p-paginator {
-    padding: 0px;
-  }
-  
-  body .p-paginator .p-paginator-current {
-    float: left;
-    background-color: transparent;
-    border: 0 none;
-    color: #6c757d;
-    margin: 3px;
-    padding: 1px;
-  }
-  
-  body .p-paginator .p-paginator-pages .p-paginator-page {
-    background-color: transparent;
-    border: 0 none;
-    color: #6c757d;
-    min-width: 2.357rem;
-    height: 26px;
-    margin: 0px;
-    transition: box-shadow 0.2s;
-    border-radius: 3px;
-  }
+  background-color: #f4f4f4;
+}
 
-  .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-    background: #EFF6FF;
-    border-color: #EFF6FF;
-    color: #1D4ED8;
-    font-weight: 600;
-  }
-  
-  .p-paginator .p-dropdown {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    height: 2.357rem;
-  }
-  
-  body .p-datatable .p-paginator-bottom {
-    border-width: 0px 0px 1px 0px;
-    border-radius: 0;
-  }
-  
-  body .p-paginator .p-dropdown {
-    margin-left: 1px;
-    margin-right: 20px;
-    height: 30px;
-  }
-  
-  .p-paginator .p-dropdown .p-dropdown-label {
-    padding-right: 0;
-    padding-top: 2px;
-  }
-  
-  .p-paginator .p-dropdown .p-dropdown-panel ul li:last-child {
-    float: left;
-  }
-  
-  .p-dropdown .p-dropdown-label {
-    background: transparent;
-    border: 0 none;
-    padding: 3px;
-  }
-  
-  /* Fim configuração tabela */
-  
-  
-  /* Sobreescrita do scroll*/
-  .p-scrollpanel .p-scrollpanel-bar {
-    background: #1976d2;
-    border: 0 none;
-  }
-  
-  /* sobreescrita listbox */
-  body .p-listbox {
-    padding: 0;
-    min-width: 0px;
-    border: 0px;
-  }
-  
-  /* sobreescrita listbox */
-  body .p-listbox .p-listbox-list .p-listbox-item {
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0;
-    border: none;
-    color: #333333;
-    transition: background-color 0.2s, box-shadow 0.2s;
-    border-radius: 0;
-  }
-  
-  /* sobreescrita listbox */
-  body .p-listbox .p-listbox-list .p-listbox-item.p-state-highlight {
-    color: #333333;
-  }
-  
-  /* sobreescrita listbox */
-  body .p-listbox .p-listbox-list .p-listbox-item:focus {
-    outline: 0 none;
-    outline-offset: 0;
-    box-shadow: none;
-  }
-  
-  /* sobreescrita listbox */
-  body .p-listbox .p-listbox-header {
-    padding: 0;
-    border-bottom: 1px solid #eaeaea;
-    color: #333333;
-    margin: 0;
-  }
-  
-  /* sobreescrita calendario */
-  .p-datepicker table th {
-    padding: 5px;
-    font-size: 12px;
-  }
-  
-  /* sobreescrita calendario */
-  .p-datepicker table td {
-    padding: 0px;
-    font-size: 12px;
-  }
-  
-  /* sobreescrita calendario */
-  .p-datepicker .p-datepicker-header {
-    padding: 0px;
-  }
-  
-  /* sobreescrita tabview */
-  .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-    padding: 10px !important; 
-  }
-  
-  /* sobreescrita card */
-  .p-card .p-card-content {
-    padding: 5px;
-  }
-  
-  .p-card .p-card-body {
-    padding: 10px;
-  }  
+/* Inicio Campos Invalidos  */
+.campoInvalido input{
+  border: 1px solid red !important;
+}
 
-  /* sobreescrita inputgroup-addon */
-  .p-inputgroup-addon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 27px;
-    margin-top: 2px;
+.campoInvalido label{
+  color: red !important;
+}
+
+.campoInvalido textarea{
+  border: 1px solid red !important;
+}
+
+.campoInvalido .p-dropdown{
+  border: 1px solid red !important;
+  padding: 0px !important;
+}
+
+/* Fim Campos Invalidos  */
+
+/* Inicio Campos Validos  */
+.campoValido input{
+  color: #222222 !important;
+  transition: .2s !important;
+}
+
+.campoValido label{
+  color: #495057 !important;
+}
+
+.campoValido textarea{
+  color: #222222 !important;
+  transition: .2s !important;
+}
+
+.campoInvalido .p-dropdown{
+  color: #222222;
+  transition: .2s;
+}
+
+.campoObrigatorio{
+  color: red !important;
+}
+
+/* Fim Campos validos  */
+
+.botao-menu {
+  height: 30px;
+  margin-right: 5px !important;
+}
+
+.margem-botao-relatorio {
+  margin-top: 20px;
+  width: 95px !important;
+}
+
+.botao-filtro {
+  width: 120px !important;
+  margin-top: 5px;
+}
+
+.linha-selecao-tabela {
+  background-color: #1e94d2 !important;
+  color: #FFF !important;
+  font-weight: 600;
+}
+
+.menu-list {
+  margin-bottom: -15px;
+}
+
+.menu-form {
+  margin-bottom: -10px;
+}
+
+.radio {
+  margin-bottom: 10px;
+}
+
+.ajustes-breadcrumb {
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+/* sobreescrita breadcrumb */
+body .p-breadcrumb {
+  background-color: #ffffff;
+  border: 1px solid #c8c8c8;
+  padding: 5px;
+}
+
+/* sobreescrita da fonte padrão*/
+body .p-component {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+/* sobreescrita do botão*/
+body .p-button.p-button-icon-only {
+  width: 2.357rem;
+  padding: 6px 6px;
+}
+
+/* sobreescrita dos icones*/
+body .pi {
+  font-size: 12px;
+}
+
+/* sobreescrita dos fieldset*/
+.fildset-filtro .p-fieldset {
+  margin-top: 12px;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  color: #495057;
+  border-radius: 3px;
+}
+
+/* sobreescrita dos fieldset*/
+.p-fieldset.p-fieldset-toggleable .p-fieldset-legend a{
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+}
+
+/* sobreescrita dos fieldset*/
+.fildset-formulario .p-fieldset {
+  margin-top: 16px;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  color: #495057;
+  border-radius: 3px;
+}
+
+/* sobreescrita dos fieldset*/
+.p-fieldset .p-fieldset-legend {
+  padding: 7px 10px 7px 10px;
+  border: 1px solid #dee2e6;
+  color: #024103d6;
+  background: #f8f9fa;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+/* sobreescrita dos fieldset*/
+.p-fieldset .p-fieldset-content {
+  padding: 8px;
+}
+
+/* sobreescrita do field*/
+.field {
+  margin-bottom: 4px;
+}
+
+/* sobreescrita de label*/
+.field > label {
+  display: inline-block;
+  margin-bottom: 1px;
+}
+
+/* sobreescrita dos inputs padrão */
+body .p-inputtext {
+  font-size: 13px;
+  color: #333333;
+  background: #ffffff;
+  padding: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: 1px solid #a6a6a6;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* sobreescrita do botões padrão*/
+body .ui-button.ui-button-text-only .ui-button-text {
+  padding: 4px;
+  font-weight: bold;
+}
+
+/* sobreescrita do slide button */
+.p-inputswitch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: 4px;
+  height: 1.50rem;
+}
+
+.p-inputswitch .p-inputswitch-slider:before {
+  background: #ffffff;
+  width: 1.0rem;
+  height: 1.0rem;
+  left: 0.25rem;
+  margin-top: -0.525rem;
+  border-radius: 50%;
+  transition-duration: 0.2s;
+}
+
+/* Inicio configuração tabela */
+
+body .p-datatable .p-datatable-thead  > tr > th {
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #e9ecef;
+  border-width: 1px 1px 1px 1px;
+  font-weight: 700;
+  color: #333333;
+  background: #f4f4f4;
+  transition: box-shadow 0.2s;
+}
+
+body .p-datatable .p-datatable-tbody > tr > td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #e9ecef;
+  border-width: 1px 1px 1px 1px;
+}
+
+body .p-table .p-table-tbody > tr > td {
+  padding: 3px;
+}
+
+.p-paginator .p-dropdown .p-dropdown-panel ul li:last-child {
+  float: right;
+}
+
+.p-paginator {
+  padding: 0px;
+}
+
+body .p-paginator .p-paginator-current {
+  float: left;
+  background-color: transparent;
+  border: 0 none;
+  color: #6c757d;
+  margin: 3px;
+  padding: 1px;
+}
+
+body .p-paginator .p-paginator-pages .p-paginator-page {
+  background-color: transparent;
+  border: 0 none;
+  color: #6c757d;
+  min-width: 2.357rem;
+  height: 26px;
+  margin: 0px;
+  transition: box-shadow 0.2s;
+  border-radius: 3px;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #EFF6FF;
+  border-color: #EFF6FF;
+  color: #1D4ED8;
+  font-weight: 600;
+}
+
+.p-paginator .p-dropdown {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  height: 2.357rem;
+}
+
+body .p-datatable .p-paginator-bottom {
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0;
+}
+
+body .p-paginator .p-dropdown {
+  margin-left: 1px;
+  margin-right: 20px;
+  height: 30px;
+}
+
+.p-paginator .p-dropdown .p-dropdown-label {
+  padding-right: 0;
+  padding-top: 2px;
+}
+
+.p-paginator .p-dropdown .p-dropdown-panel ul li:last-child {
+  float: left;
+}
+
+.p-dropdown .p-dropdown-label {
+  background: transparent;
+  border: 0 none;
+  padding: 3px;
+}
+
+/* Fim configuração tabela */
+
+
+/* Sobreescrita do scroll*/
+.p-scrollpanel .p-scrollpanel-bar {
+  background: #1976d2;
+  border: 0 none;
+}
+
+/* sobreescrita listbox */
+body .p-listbox {
+  padding: 0;
+  min-width: 0px;
+  border: 0px;
+}
+
+/* sobreescrita listbox */
+body .p-listbox .p-listbox-list .p-listbox-item {
+  margin: 0px;
+  margin-bottom: 5px;
+  padding: 0;
+  border: none;
+  color: #333333;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  border-radius: 0;
+}
+
+/* sobreescrita listbox */
+body .p-listbox .p-listbox-list .p-listbox-item.p-state-highlight {
+  color: #333333;
+}
+
+/* sobreescrita listbox */
+body .p-listbox .p-listbox-list .p-listbox-item:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+/* sobreescrita listbox */
+body .p-listbox .p-listbox-header {
+  padding: 0;
+  border-bottom: 1px solid #eaeaea;
+  color: #333333;
+  margin: 0;
+}
+
+/* sobreescrita calendario */
+.p-datepicker table th {
+  padding: 5px;
+  font-size: 12px;
+}
+
+/* sobreescrita calendario */
+.p-datepicker table td {
+  padding: 0px;
+  font-size: 12px;
+}
+
+/* sobreescrita calendario */
+.p-datepicker .p-datepicker-header {
+  padding: 0px;
+}
+
+/* sobreescrita tabview */
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  padding: 10px !important; 
+}
+
+/* sobreescrita card */
+.p-card .p-card-content {
+  padding: 5px;
+}
+
+.p-card .p-card-body {
+  padding: 10px;
+}  
+
+/* sobreescrita inputgroup-addon */
+.p-inputgroup-addon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27px;
+  margin-top: 2px;
 }

@@ -1,0 +1,119 @@
+<div class="field col-12 md:col-12">
+    <button label="Adicionar" pButton type="button" style="float: right"
+        icon="pi pi-plus" class="p-button-primary alinhamento-botao-adicionar" 
+        (click)="abrirDialog()" [disabled]="consulta">
+    </button>
+    <div class="margin-botao-adicionar"></div>
+</div>
+
+<div class="field col-12 md:col-12" *ngFor="let item of entidade.enderecos">
+    <p-card class="formatacao-endereco">
+        
+        <div class="formgrid grid">                
+
+            <div class="field col-12 md:col-2">
+                <label>CEP:</label>{{item.cep}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Estado:</label>{{item.estado}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Cidade:</label>{{item.cidade}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Bairro:</label>{{item.bairro}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Endereço:</label>{{item.endereco}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Nº:</label>{{item.numero}}
+            </div>
+            <div class="field col-12 md:col-12">
+                <label>Observação:</label>{{item.observacao}}
+            </div>
+
+            <div class="field col-12 md:col-12" [hidden]="consulta">
+                <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="bottom"
+                    class="p-button-success margem-botao" (click)="selecionar(item)">
+                </a>
+                <a pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom"
+                    class="p-button-danger" (click)="remover(item)">
+                </a>
+            </div>
+
+        </div>
+
+    </p-card>
+</div>
+
+
+<p-dialog header="{{tituloDialog}}" [(visible)]="visibleDialog" [modal]="true" [style]="{width: '1000px', height:'500px'}" [contentStyle]="{'max-height':'500px'}" (onHide)="fecharDialog()">
+
+    <p-fieldset legend="Dados" class="fildset-formulario">
+        <div class="field col-12 md:col-12">
+
+            <div class="formgrid grid">
+
+                <div class="field col-12 md:col-2">
+                    <label for="CEP">CEP<span class="campoObrigatorio">*</span></label>
+                    <p-inputMask name="cep" [(ngModel)]="enderecoSelecionado.cep" mask="99.999-999" [unmask]="true"
+                        requerid [size]="15"></p-inputMask>
+                </div>
+
+                <div class="field col-12 md:col-3">
+                    <label for="enderecoSelecionadoEstado">Estado<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                        <p-dropdown [options]="ufs" [filter]="false" placeholder="Selecione"
+                        [required]="true" name="enderecoSelecionadoEstado" [(ngModel)]="enderecoSelecionado.estado"></p-dropdown>
+                    </div>
+                </div>
+
+                <div class="field col-12 md:col-7">
+                    <label for="enderecoSelecionadoCidade">Cidade<span class="campoObrigatorio">*</span></label>
+                    <input id="enderecoSelecionadoCidade" class="inputfield w-full" pInputText type="text" 
+                      name="enderecoSelecionadoCidade" [(ngModel)]="enderecoSelecionado.cidade"
+                      [disabled]="consulta" minlength="2" maxlength="100" upperCase>
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label for="enderecoSelecionadoBairro">Bairro<span class="campoObrigatorio">*</span></label>
+                    <input id="enderecoSelecionadoBairro" class="inputfield w-full" pInputText type="text" 
+                      name="enderecoSelecionadoBairro" [(ngModel)]="enderecoSelecionado.bairro"
+                      [disabled]="consulta" minlength="2" maxlength="100" upperCase>
+                </div>
+
+                <div class="field col-12 md:col-6">
+                    <label for="enderecoSelecionadoEndereco">Endereço<span class="campoObrigatorio">*</span></label>
+                    <input id="enderecoSelecionadoEndereco" class="inputfield w-full" pInputText type="text" 
+                      name="enderecoSelecionadoEndereco" [(ngModel)]="enderecoSelecionado.endereco"
+                      [disabled]="consulta" minlength="2" maxlength="200" upperCase>
+                </div>
+
+                <div class="field col-12 md:col-2">
+                    <label for="enderecoSelecionadoNumero">Número<span class="campoObrigatorio">*</span></label>
+                    <input id="enderecoSelecionadoNumero" class="inputfield w-full" pInputText type="text" 
+                      name="enderecoSelecionadoNumero" [(ngModel)]="enderecoSelecionado.numero"
+                      [disabled]="consulta" maxlength="20" upperCase>
+                </div>
+
+                <div class="field col-12 md:col-12">
+                    <label for="enderecoSelecionadoObservacao">Observação</label>
+                    <input id="enderecoSelecionadoObservacao" class="inputfield w-full" pInputText type="text" 
+                      name="enderecoSelecionadoObservacao" [(ngModel)]="enderecoSelecionado.observacao" 
+                      [disabled]="consulta" maxlength="200" upperCase>
+                </div>
+
+            </div>
+
+        </div>
+    </p-fieldset>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="pi pi-times" (click)="fecharDialog()" label="Cancelar" class="p-button-danger" style="width: 130px;"></button>
+            <button type="button" pButton icon="pi pi-check" (click)="adicionar(enderecoSelecionado)" label="Salvar" style="width: 130px;"></button>
+        </div>
+    </p-footer>
+
+</p-dialog>

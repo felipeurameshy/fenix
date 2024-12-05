@@ -1,0 +1,149 @@
+<div class="col-12 md:col-12">
+
+    <form #formulario="ngForm" autocomplete="off">
+  
+      <div class="formgrid grid">
+  
+        <div class="col-12 md:col-12 menu-form">
+          <app-menu-form
+            [rotaListar]="rotaListar"
+            [tipoMenu]="tipoMenu"
+            [formulario]="formulario"
+            (salvar)="salvar($event)"
+            (excluir)="excluir()"
+            [itemsBreadCrumb]="items">
+          </app-menu-form>
+        </div>
+  
+        <div class="col-12 md:col-12">
+  
+          <p-fieldset legend="Dados" class="fildset-formulario">
+  
+            <div class="formgrid grid">
+
+              <div class="field col-12 md:col-2">
+                <label>Data<span class="campoObrigatorio">*</span></label>
+                <div class="p-grid p-fluid">
+                  <p-calendar name="data" [(ngModel)]="entidade.dataDespesa" dateFormat="dd/mm/yy"
+                  [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                  [disabled]="consulta"></p-calendar>
+                </div>
+              </div>                   
+              
+              <div class="field col-12 md:col-8" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                <label>Categoria</label>
+                <div class="p-grid p-fluid">
+                  <app-select-categoria [model]="entidade.categoria" [desabilitar]="consulta"
+                    [validacao]="formularioInvalido && !entidade.categoria.id" [required]="true"
+                    (seleciona)="selecionarCategoria($event)"></app-select-categoria>
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-2">
+                <label for="valorTotal">Valor total</label>
+                <p-inputNumber id="valorTotal" class="inputfield w-full" readonly="true"
+                 mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
+                 name="valorTotal" [(ngModel)]="entidade.valorTotal" [disabled]="consulta"/>
+              </div>
+
+              <div class="field col-12 md:col-12" [ngClass]="formularioInvalido  && formulario.form.controls['descricao'].invalid? 'campoInvalido':'campoValido'">
+                <label for="descricao">Descrição<span class="campoObrigatorio">*</span></label>
+                <textarea id="descricao" name="descricao" class="inputfield w-full" [rows]="10" [cols]="30"
+                pInputTextarea  [disabled]="consulta" required [(ngModel)]="entidade.descricao"
+                maxlength="5000" minlength="3"></textarea>
+              </div>
+
+            </div>
+  
+          </p-fieldset>
+
+          <p-fieldset legend="Produtos" class="fildset-formulario">
+            
+              <div class="col-12 md:col-12">
+
+                <div class="formgrid grid">
+
+                    <div class="field col-12 md:col-4">
+                        <label for="despesaItemSelecionadoDescricao">Descrição</label>
+                        <input id="despesaItemSelecionadoDescricao" class="inputfield w-full"
+                        pInputText type="text" name="despesaItemSelecionadoDescricao" [(ngModel)]="despesaItemSelecionado.descricao"
+                        [disabled]="consulta" minlength="3" maxlength="100">
+                    </div>
+
+                    <div class="field col-12 md:col-2">
+                        <label for="despesaItemSelecionadoValorUnitario">Valor unitário</label>
+                        <p-inputNumber id="despesaItemSelecionadoValorUnitario" class="inputfield w-full"
+                         mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
+                         name="despesaItemSelecionadoValorUnitario" [(ngModel)]="despesaItemSelecionado.valorUnitario" [disabled]="consulta" />
+                    </div>
+
+                    <div class="field col-12 md:col-2">
+                      <label for="despesaItemSelecionadoQuantidade">Quantidade</label>
+                      <p-inputNumber id="despesaItemSelecionadoQuantidade" class="inputfield w-full" (onBlur)="calcularValorTotalItem(despesaItemSelecionado)"
+                       mode="decimal" [minFractionDigits]="0" [maxFractionDigits]="0"
+                       name="despesaItemSelecionadoQuantidade" [(ngModel)]="despesaItemSelecionado.quantidade" [disabled]="consulta"/>
+                    </div>                     
+
+                    <div class="field col-12 md:col-2">
+                      <label for="despesaItemSelecionadoValorTotal">Valor Total</label>
+                      <p-inputNumber id="despesaItemSelecionadoValorTotal" class="inputfield w-full" readonly="true"
+                       mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
+                       name="despesaItemSelecionadoValorTotal" [(ngModel)]="despesaItemSelecionado.valorTotal" [disabled]="consulta"/>
+                    </div> 
+
+                    <div class="field col-12 md:col-2">
+                      <button label="Adicionar" pButton type="button"
+                          icon="pi pi-plus" class="p-button-primary botao-menu botao-adicionar" 
+                          (click)="adicionarItem(despesaItemSelecionado)">
+                      </button>
+                    </div>
+
+                </div>
+
+              </div>
+
+              <div class="field col-12 md:col-12 tabela">
+                  <p-table [value]="entidade.itens">
+                      <ng-template pTemplate="header">
+                          <tr>
+                              <th style="width: 70%">Descrição</th>
+                              <th style="width: 10%">Quantidade</th>
+                              <th style="width: 10%">Valor Unitário</th>
+                              <th style="width: 10%">Valor Total</th>
+                              <th style="width: 7em"></th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-item let-i="rowIndex">
+                          <tr>
+                              <td>{{item.descricao}}</td>
+                              <td>{{item.quantidade}}</td>
+                              <td>{{item.valorUnitario | currency:'BRL'}}</td>
+                              <td>{{item.valorTotal | currency:'BRL'}}</td>
+                              <td>
+                                  <div class="field col-12 md:col-12">
+                                      <a pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom"
+                                          class="p-button-danger margem-menu" (click)="removerItem(item)">
+                                      </a>
+                                  </div>
+                              </td>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="12">
+                                Nenhum registro encontrado
+                              </td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>            
+
+          </p-fieldset>
+  
+        </div>
+  
+      </div>
+  
+    </form>
+  
+  </div>

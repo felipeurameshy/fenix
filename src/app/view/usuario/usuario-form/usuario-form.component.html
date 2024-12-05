@@ -57,6 +57,14 @@
                 </div>
               </div>
   
+              <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                <label>Tipo</label>
+                <div class="p-grid p-fluid">
+                  <p-dropdown [options]="tipos" [filter]="false" placeholder="Selecione"
+                  [required]="true" name="tipo" [(ngModel)]="entidade.tipo"  [disabled]="consulta"></p-dropdown>
+                </div>
+              </div>
+  
               <div class="field col-12 md:col-3" [ngClass]="formularioInvalido  && formulario.form.controls['senha'].invalid? 'campoInvalido':'campoValido'">
                 <label for="senha">Senha</label>
                 <input id="senha" class="inputfield w-full"

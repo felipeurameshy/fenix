@@ -1,16 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
-import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-
-import { ErrorHandlerService } from '../../configuration/core/error-handler.service';
-import { LoadingService } from '../../configuration/core/loading.service';
-import { MenuService } from '../../configuration/core/menu.service';
-import { SegurancaService } from '../../configuration/security/seguranca.service';
+import { AuthorizationService } from '../../configuration/security/authorization.service';
 
 @Component({
   selector: 'app-login',
@@ -21,36 +15,14 @@ import { SegurancaService } from '../../configuration/security/seguranca.service
 })
 export class LoginComponent implements OnInit {
   
-  @ViewChild("formulario")
-  formulario: FormControl = new FormControl();
-
   constructor(
-    private segurancaService: SegurancaService,
-    private router: Router,
-    private errorHandler: ErrorHandlerService,
-    private loadingService: LoadingService,
-    public messageService: MessageService,
-    public menuService: MenuService,
+    private authorizationService: AuthorizationService
   ) { }
 
   ngOnInit() {}
 
-  login(email: string, senha: string) {
-    if(email == null || email.length == 0 || senha == null || senha.length == 0){
-      this.messageService.add({severity:'warn', summary:'Aviso!', detail:'Informe o login e a senha'});
-    }else{
-      this.loadingService.show();
-      this.segurancaService.login(email.toUpperCase(), senha)
-        .then(() => {
-          this.router.navigate(['/principal']);
-          this.loadingService.hide();
-        })
-        .catch(erro => {
-          this.errorHandler.handle(erro);
-          this.loadingService.hide();
-        });
-    }
-    
+  login() {
+    this.authorizationService.login();
   }
 
 }

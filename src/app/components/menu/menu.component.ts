@@ -2,14 +2,12 @@ import { FormsModule }   from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { ConfirmationService } from 'primeng/api';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
-import { SegurancaService } from '../../configuration/security/seguranca.service';
 import { ErrorHandlerService } from '../../configuration/core/error-handler.service';
-import { MenuService } from '../../configuration/core/menu.service';
 import { SystemService } from '../../configuration/core/system.service';
+import { AuthorizationService } from '../../configuration/security/authorization.service';
+import { MenuService } from '../../configuration/core/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -27,11 +25,11 @@ export class MenuComponent {
   public versaoApi!: string;
 
   constructor(
-    public segurancaService: SegurancaService,
-    public systemService: SystemService,
     public router: Router,
     public confirmation: ConfirmationService,
     public errorHandler: ErrorHandlerService,
+    public authorizationService: AuthorizationService,
+    public systemService: SystemService,
     public menuService: MenuService,
   ) {}
 
@@ -40,7 +38,8 @@ export class MenuComponent {
   }
 
   exibirMenu() {
-    return this.router.url !== '/login';
+    return this.router.url !== '/login' && !this.router.url.includes('/pedido/catalogo') && !this.router.url.includes('/pedido/produto') 
+    && !this.router.url.includes('/pedido/carrinho') && !this.router.url.includes('/pedido/entrega');
   }
 
   mostrarMenuLateral(){
@@ -48,19 +47,18 @@ export class MenuComponent {
     this.menuService.exibirMenu(this.mostrarMenu);
   }
 
+
   logout() {
-    this.segurancaService.logout();
-    this.router.navigate(['/login']);
     this.mostrarMenu = false;
     this.menuService.exibirMenu(this.mostrarMenu);
-    sessionStorage.clear();
+    this.authorizationService.logout();
   }
 
   carregarVersaoApi() {
     this.systemService.versaoApi()
-    .then((dado: { mensagem: string; }) => {
-      if(dado){
-        this.versaoApi = dado.mensagem;
+    .then((dados: { mensagem: string; }) => {
+      if(dados){
+        this.versaoApi = dados.mensagem;
       }
     })
   }

@@ -16,7 +16,7 @@ import { BaseResourceListComponent } from '../../../configuration/generic/compon
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuListComponent } from '../../../components/menu-list/menu-list.component';
 import { LoadingService } from '../../../configuration/core/loading.service';
-import { SegurancaService } from '../../../configuration/security/seguranca.service';
+import { AuthorizationService } from '../../../configuration/security/authorization.service';
 import { Secao } from '../../../model/secao';
 import { SecaoFiltro, SecaoService } from '../../../service/secao.service';
 
@@ -37,7 +37,7 @@ export class SecaoListComponent extends BaseResourceListComponent<Secao, SecaoFi
     errorHandler: ErrorHandlerService,
     router: Router,
     loadingService: LoadingService,
-    segurancaService: SegurancaService) {
+    authorizationService: AuthorizationService) {
     super(
       entidadeService,
       "/secao",
@@ -50,7 +50,7 @@ export class SecaoListComponent extends BaseResourceListComponent<Secao, SecaoFi
       errorHandler,
       router,
       loadingService,
-      segurancaService
+      authorizationService
     );
   }
 

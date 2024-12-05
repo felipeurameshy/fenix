@@ -5,6 +5,7 @@ export class Usuario {
     nome!: String;
     cpf!: String;
     status!: String; //Enum
+    tipo!: String; //Enum
     email!: String;
     senha!: String;
     perfil = new Perfil();    

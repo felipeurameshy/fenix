@@ -16,7 +16,7 @@ import { BaseResourceListComponent } from '../../../configuration/generic/compon
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuListComponent } from '../../../components/menu-list/menu-list.component';
 import { LoadingService } from '../../../configuration/core/loading.service';
-import { SegurancaService } from '../../../configuration/security/seguranca.service';
+import { AuthorizationService } from '../../../configuration/security/authorization.service';
 import { Categoria } from '../../../model/categoria';
 import { CategoriaFiltro, CategoriaService } from '../../../service/categoria.service';
 
@@ -37,7 +37,7 @@ export class CategoriaListComponent extends BaseResourceListComponent<Categoria,
     errorHandler: ErrorHandlerService,
     router: Router,
     loadingService: LoadingService,
-    segurancaService: SegurancaService) {
+    authorizationService: AuthorizationService) {
     super(
       entidadeService,
       "/categoria",

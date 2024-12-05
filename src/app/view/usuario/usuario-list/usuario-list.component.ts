@@ -18,7 +18,7 @@ import { UsuarioFiltro, UsuarioService } from '../../../service/usuario.service'
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuListComponent } from '../../../components/menu-list/menu-list.component';
 import { LoadingService } from '../../../configuration/core/loading.service';
-import { SegurancaService } from '../../../configuration/security/seguranca.service';
+import { AuthorizationService } from '../../../configuration/security/authorization.service';
 
 @Component({
   selector: 'app-usuario-list',
@@ -37,7 +37,7 @@ export class UsuarioListComponent extends BaseResourceListComponent<Usuario, Usu
     errorHandler: ErrorHandlerService,
     router: Router,
     loadingService: LoadingService,
-    segurancaService: SegurancaService) {
+    authorizationService: AuthorizationService) {
     super(
       entidadeService,
       "/usuario",
@@ -50,7 +50,7 @@ export class UsuarioListComponent extends BaseResourceListComponent<Usuario, Usu
       errorHandler,
       router,
       loadingService,
-      segurancaService
+      authorizationService
     );
   }
 

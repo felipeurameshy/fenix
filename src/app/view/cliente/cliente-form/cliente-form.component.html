@@ -1,0 +1,74 @@
+<div class="col-12 md:col-12">
+
+    <form #formulario="ngForm" autocomplete="off">
+  
+      <div class="formgrid grid">
+  
+        <div class="col-12 md:col-12 menu-form">
+          <app-menu-form
+            [rotaListar]="rotaListar"
+            [tipoMenu]="tipoMenu"
+            [formulario]="formulario"
+            (salvar)="salvar($event)"
+            (excluir)="excluir()"
+            [itemsBreadCrumb]="items">
+          </app-menu-form>
+        </div>
+  
+        <div class="col-12 md:col-12">
+  
+          <p-fieldset legend="Dados" class="fildset-formulario">
+  
+            <div class="formgrid grid">
+  
+                <div class="field col-12 md:col-6" [ngClass]="formularioInvalido && formulario.form.controls['nome'].invalid? 'campoInvalido':'campoValido'">
+                    <label for="nome">Nome<span class="campoObrigatorio">*</span></label>
+                    <input id="nome" class="inputfield w-full"
+                    pInputText type="text" name="nome" [(ngModel)]="entidade.nome"
+                    [disabled]="consulta" required minlength="3" maxlength="200" upperCase>
+                </div>    
+                
+                <div class="field col-12 md:col-6" [ngClass]="formularioInvalido && formulario.form.controls['email'].invalid? 'campoInvalido':'campoValido'">
+                    <label for="email">E-mail<span class="campoObrigatorio">*</span></label>
+                    <input id="email" class="inputfield w-full"
+                    pInputText type="text" name="email" [(ngModel)]="entidade.email"
+                    [disabled]="consulta" required minlength="3" maxlength="200" upperCase>
+                </div> 
+
+                <div class="p-grid p-fluid field col-12 md:col-2" [ngClass]="formularioInvalido && !entidade.telefone? 'campoInvalido':'campoValido'">
+                    <label for="telefone">Telefone<span class="campoObrigatorio">*</span></label>
+                    <p-inputMask id="telefone" name="telefone" [(ngModel)]="entidade.telefone" mask="(99) 99999-9999" [unmask]="true" 
+                     [disabled]="consulta" requerid class="inputfield w-full"></p-inputMask>
+                </div>
+  
+            </div>
+  
+          </p-fieldset>
+  
+        </div>
+
+        <div class="col-12 md:col-12">
+
+            <div class="col-12 md:col-12 fildset-tabview">
+        
+              <p-tabView [scrollable]="true"> 
+    
+                <p-tabPanel header="Endereços">
+                  <div class="formgrid grid">
+                    <div class="field col-12 md:col-12">
+                      <app-cliente-form-endereco [entidade]="entidade" [consulta]="consulta" [formulario]="formularioInvalido" [form]="formulario"></app-cliente-form-endereco>
+                    </div>
+                  </div>
+                </p-tabPanel>                    
+    
+              </p-tabView>
+    
+            </div>
+            
+          </div>
+  
+      </div>
+  
+    </form>
+  
+  </div>
