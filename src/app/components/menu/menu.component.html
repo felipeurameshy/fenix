@@ -38,12 +38,6 @@
         <label class="label-menu" for="cadastro"><i class="pi pi-book"></i>Cadastro</label>
         <ul>
 
-          @if(authorizationService.temPermissao('CATALOGO_CONSULTAR')) {
-            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
-              <a (click)="navegar('/catalogo/listar')"><i class="fa-solid fa-receipt"></i>Catálogo</a>
-            </li>            
-          }
-
           @if(authorizationService.temPermissao('CATEGORIA_CONSULTAR')) {
             <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
               <a (click)="navegar('/categoria/listar')"><i class="fa-solid fa-layer-group"></i>Categoria</a>
@@ -87,12 +81,6 @@
           @if(authorizationService.temPermissao('ENTRADA_NF_CONSULTAR')) {
             <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
               <a (click)="navegar('/entrada-nf/listar')"><i class="fa-solid fa-file-invoice"></i>Entrada NF</a>
-            </li>            
-          }
-
-          @if(authorizationService.temPermissao('PEDIDO_CONSULTAR')) {
-            <li class="navbar-menuitem" routerLinkActive="navbar-menuitem-ativo">
-              <a (click)="navegar('/pedido/listar')"><i class="fa-solid fa-cart-shopping"></i>Pedido</a>
             </li>            
           }
 

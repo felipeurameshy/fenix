@@ -56,9 +56,10 @@
         <ng-template pTemplate="header">
             <tr>
                 <th style="width:6%">ID</th>
-                <th style="width:14%">Cnpj/Cpf</th>
-                <th style="width:40%">Razão Social</th>
-                <th style="width:40%">Nome Fantasia</th>
+                <th style="width:10%">Cnpj/Cpf</th>
+                <th style="width:38%">Razão Social</th>
+                <th style="width:38%">Nome Fantasia</th>
+                <th style="width:8%">Status</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-entidade>
@@ -67,6 +68,7 @@
                 <td>{{entidade.cnpjCpf | cnpjCpf}}</td>              
                 <td>{{entidade.razaoSocial}}</td>
                 <td>{{entidade.nomeFantasia}}</td>
+                <td>{{entidade.status}}</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

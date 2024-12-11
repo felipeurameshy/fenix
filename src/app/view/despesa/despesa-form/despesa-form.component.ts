@@ -24,7 +24,6 @@ import { CalendarModule } from 'primeng/calendar';
 import { BaseResourceFormComponent } from '../../../configuration/generic/components/base-resource-form.component';
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuFormComponent } from '../../../components/menu-form/menu-form.component';
-import { UpperCaseDirective } from '../../../configuration/shared/upper-case.directive';
 import { LoadingService } from '../../../configuration/core/loading.service';
 import { TableModule } from 'primeng/table';
 import { Despesa, DespesaItem } from '../../../model/despesa';
@@ -35,7 +34,7 @@ import { SelectCategoriaComponent } from '../../../components/select-categoria/s
 @Component({
   selector: 'app-despesa-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, MenuFormComponent, UpperCaseDirective, InputTextModule, ButtonModule, TooltipModule,
+  imports: [FormsModule, CommonModule, MenuFormComponent, InputTextModule, ButtonModule, TooltipModule,
     FieldsetModule, BreadcrumbModule, ToastModule, InputNumberModule, InputGroupModule, InputGroupAddonModule, FileUploadModule, 
     InputTextareaModule, DropdownModule, SelectCategoriaComponent, CardModule, TableModule, CalendarModule, CurrencyPipe],
   templateUrl: './despesa-form.component.html',

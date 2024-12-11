@@ -1,10 +1,10 @@
 <div class="col-12 md:col-12 menu-list">
     <app-menu-list [rotaPadrao]="rotaPadrao"
       [idEntidade]="idEntidade"
-      [permissaoNovo]="authorizationService.temPermissao('USUARIO_INCLUIR')"
-      [permissaoEditar]="authorizationService.temPermissao('USUARIO_ALTERAR')"
-      [permissaoConsultar]="authorizationService.temPermissao('USUARIO_CONSULTAR')"
-      [permissaoExcluir]="authorizationService.temPermissao('USUARIO_EXCLUIR')"
+      [permissaoNovo]="authorizationService.temPermissao('PRODUTO_INCLUIR')"
+      [permissaoEditar]="authorizationService.temPermissao('PRODUTO_ALTERAR')"
+      [permissaoConsultar]="authorizationService.temPermissao('PRODUTO_CONSULTAR')"
+      [permissaoExcluir]="authorizationService.temPermissao('PRODUTO_EXCLUIR')"
       [itemsBreadCrumb]="items">
     </app-menu-list>
   </div>
@@ -24,15 +24,15 @@
           </div>
   
           <div class="field col-12 md:col-10">
-            <label for="email">E-mail</label>
-            <input id="email" class="inputfield w-full"
-             pInputText type="text" name="email" [(ngModel)]="filtro.email" maxlength="100">
+            <label for="descricao">Descrição</label>
+            <input id="descricao" class="inputfield w-full"
+             pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" maxlength="100">
           </div>
   
           <div class="field col-12 md:col-12">
             <button pButton type="submit" label="Pesquisar" class="botao-filtro botao-menu"></button>
             <button pButton type="button" label="Limpar" class="botao-filtro botao-menu" (click)="limparFiltro()"></button>
-        </div>
+          </div>
   
         </div>
   
@@ -49,16 +49,28 @@
           [rowsPerPageOptions]="[10,15,20,25,30]">
       <ng-template pTemplate="header">
           <tr>
-              <th style="width:10%">ID</th>
-              <th style="width:45%">Nome</th>
-              <th style="width:45%">E-mail</th>
+              <th style="width:7%">ID</th>
+              <th style="width:7%">Ean13</th>
+              <th style="width:38%">Descrição</th>
+              <th style="width:8%">Valor Cst</th>
+              <th style="width:8%">Valor Vda</th>
+              <th style="width:8%">Valor Desc</th>
+              <th style="width:8%">Valor Vda Liq</th>
+              <th style="width:8%">Margem</th>
+              <th style="width:8%">Status</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-entidade>
-          <tr (click)="selecionarEntidade(entidade)" [class]="entidade.id == idEntidade ?'linha-selecao-tabela':null">
+          <tr (dblclick)="alterarEntidade(entidade)" (click)="selecionarEntidade(entidade)" [class]="entidade.id == idEntidade ?'linha-selecao-tabela':null">
               <td>{{entidade.id}}</td>
-              <td>{{entidade.nome}}</td>
-              <td>{{entidade.email}}</td>
+              <td>{{entidade.eanTreze}}</td>
+              <td>{{entidade.descricao}}</td>
+              <td>{{entidade.valorCusto | currency:'BRL'}}</td>
+              <td>{{entidade.valorVenda | currency:'BRL'}}</td>
+              <td>{{entidade.valorDesconto | currency:'BRL'}}</td>
+              <td>{{entidade.valorVendaLiquido | currency:'BRL'}}</td>
+              <td>{{entidade.margem | currency:'BRL'}}</td>
+              <td>{{entidade.status}}</td>
           </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
@@ -69,4 +81,4 @@
         </tr>
       </ng-template>
     </p-table>
-  </div>
+  </div>  

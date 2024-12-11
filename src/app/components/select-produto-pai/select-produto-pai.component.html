@@ -1,0 +1,17 @@
+<p-dropdown [options]="lista" [filter]="false" placeholder="Selecione" optionLabel="descricao"
+    required="{{required}}" name="{{name}}" [(ngModel)]="model" [disabled]="desabilitar"
+    placeholder="Selecione o produto" filterBy="filtroProdutoDropdown" (onBlur)="confirmar()">
+    
+    <ng-template pTemplate="filter" let-options="options">
+        <div class="flex gap-1">
+            <div class="p-inputgroup" (click)="$event.stopPropagation()">
+                <input 
+                    name = "filtroProduto" type="text" pInputText [(ngModel)]="filterValue"
+                    (keyup)="filtrar()" />
+            </div>
+            <button pButton icon="pi pi-eraser" (click)="limparFiltroSelect()" severity="secondary" pTooltip="Limpar filtro" tooltipPosition="bottom"></button>
+            <button pButton icon="fa-solid fa-magnifying-glass" (click)="listarTodos()" severity="secondary" pTooltip="Listar todos" tooltipPosition="bottom"></button>            
+        </div>
+    </ng-template>              
+
+</p-dropdown>

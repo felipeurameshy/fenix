@@ -21,7 +21,6 @@ import { Usuario } from '../../../model/usuario';
 import { UsuarioService } from '../../../service/usuario.service';
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuFormComponent } from '../../../components/menu-form/menu-form.component';
-import { UpperCaseDirective } from '../../../configuration/shared/upper-case.directive';
 import { LoadingService } from '../../../configuration/core/loading.service';
 import { Perfil } from '../../../model/perfil';
 import { BuscarPerfilComponent } from '../../../components/buscar-perfil/buscar-perfil.component';
@@ -29,7 +28,7 @@ import { BuscarPerfilComponent } from '../../../components/buscar-perfil/buscar-
 @Component({
   selector: 'app-usuario-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, MenuFormComponent, UpperCaseDirective, InputTextModule, ButtonModule, TooltipModule,
+  imports: [FormsModule, CommonModule, MenuFormComponent, InputTextModule, ButtonModule, TooltipModule,
     FieldsetModule, BreadcrumbModule, ToastModule, DropdownModule, BuscarPerfilComponent, InputMaskModule, PasswordModule],
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.css'

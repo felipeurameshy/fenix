@@ -20,26 +20,41 @@
           <p-fieldset legend="Dados" class="fildset-formulario">
   
             <div class="formgrid grid">
+
+                <div class="field col-12 md:col-2 margem-radio" [ngClass]="formularioInvalido && !entidade.cnpjCpf? 'campoInvalido':'campoValido'">
+                  <div class="p-grid p-fluid">
+                    <p-radioButton class="descricao-cnpj-cpf" [disabled]="consulta" name="groupname" value="CNPJ" [(ngModel)]="cnpjCpfSelecionado"
+                    label="Cnpj" (click)="verificarCnpjCpfCadastrado()"></p-radioButton>
+                    <p-radioButton class="descricao-cnpj-cpf" [disabled]="consulta" name="groupname" value="CPF" [(ngModel)]="cnpjCpfSelecionado"
+                    label="Cpf" (click)="verificarCnpjCpfCadastrado()"></p-radioButton>
+                    <p-inputMask name="cnpjCpf" [(ngModel)]="entidade.cnpjCpf" mask="99.999.999/9999-99" [unmask]="true"
+                    [disabled]="consulta" *ngIf="cnpjCpfSelecionado == 'CNPJ'" requerid (onBlur)="verificarCnpjCpfCadastrado()"
+                    class="inputfield w-full"></p-inputMask>
+                    <p-inputMask name="cnpjCpf" [(ngModel)]="entidade.cnpjCpf" mask="999.999.999-99" [unmask]="true"
+                    [disabled]="consulta" *ngIf="cnpjCpfSelecionado == 'CPF'" requerid (onBlur)="verificarCnpjCpfCadastrado()"
+                    class="inputfield w-full"></p-inputMask>
+                  </div>
+                </div>
   
-                <div class="field col-12 md:col-6" [ngClass]="formularioInvalido && formulario.form.controls['nome'].invalid? 'campoInvalido':'campoValido'">
+                <div class="field col-12 md:col-10" [ngClass]="formularioInvalido && formulario.form.controls['nome'].invalid? 'campoInvalido':'campoValido'">
                     <label for="nome">Nome<span class="campoObrigatorio">*</span></label>
                     <input id="nome" class="inputfield w-full"
                     pInputText type="text" name="nome" [(ngModel)]="entidade.nome"
-                    [disabled]="consulta" required minlength="3" maxlength="200" upperCase>
+                    [disabled]="consulta" required minlength="3" maxlength="200">
                 </div>    
+
+                <div class="p-grid p-fluid field col-12 md:col-2" [ngClass]="formularioInvalido && !entidade.telefone? 'campoInvalido':'campoValido'">
+                  <label for="telefone">Telefone<span class="campoObrigatorio">*</span></label>
+                  <p-inputMask id="telefone" name="telefone" [(ngModel)]="entidade.telefone" mask="(99) 99999-9999" [unmask]="true" 
+                   [disabled]="consulta" requerid class="inputfield w-full"></p-inputMask>
+                </div>
                 
-                <div class="field col-12 md:col-6" [ngClass]="formularioInvalido && formulario.form.controls['email'].invalid? 'campoInvalido':'campoValido'">
+                <div class="field col-12 md:col-10" [ngClass]="formularioInvalido && formulario.form.controls['email'].invalid? 'campoInvalido':'campoValido'">
                     <label for="email">E-mail<span class="campoObrigatorio">*</span></label>
                     <input id="email" class="inputfield w-full"
                     pInputText type="text" name="email" [(ngModel)]="entidade.email"
-                    [disabled]="consulta" required minlength="3" maxlength="200" upperCase>
-                </div> 
-
-                <div class="p-grid p-fluid field col-12 md:col-2" [ngClass]="formularioInvalido && !entidade.telefone? 'campoInvalido':'campoValido'">
-                    <label for="telefone">Telefone<span class="campoObrigatorio">*</span></label>
-                    <p-inputMask id="telefone" name="telefone" [(ngModel)]="entidade.telefone" mask="(99) 99999-9999" [unmask]="true" 
-                     [disabled]="consulta" requerid class="inputfield w-full"></p-inputMask>
-                </div>
+                    [disabled]="consulta" required minlength="3" maxlength="200">
+                </div>                 
   
             </div>
   

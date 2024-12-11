@@ -1,3 +1,11 @@
+.descricao-cnpj-cpf {
+    margin-right: 10px !important;
+}
+
+.margem-radio {
+    margin-top:  -4px !important;
+}
+
 .fildset-tabview {
     margin-top: 1px;
     margin-left: 2px;

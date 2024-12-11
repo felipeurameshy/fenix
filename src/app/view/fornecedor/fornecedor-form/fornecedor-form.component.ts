@@ -23,7 +23,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { BaseResourceFormComponent } from '../../../configuration/generic/components/base-resource-form.component';
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuFormComponent } from '../../../components/menu-form/menu-form.component';
-import { UpperCaseDirective } from '../../../configuration/shared/upper-case.directive';
 import { LoadingService } from '../../../configuration/core/loading.service';
 import { FornecedorFormEnderecoComponent } from '../fornecedor-form-endereco/fornecedor-form-endereco.component';
 import { FornecedorFormContatoComponent } from '../fornecedor-form-contato/fornecedor-form-contato.component';
@@ -33,7 +32,7 @@ import { FornecedorService } from '../../../service/fornecedor.service';
 @Component({
   selector: 'app-fornecedor-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, MenuFormComponent, UpperCaseDirective, InputTextModule, ButtonModule, TooltipModule,
+  imports: [FormsModule, CommonModule, MenuFormComponent, InputTextModule, ButtonModule, TooltipModule,
     FieldsetModule, BreadcrumbModule, InputTextareaModule, ToastModule, DropdownModule, CheckboxModule, RadioButtonModule,
     InputMaskModule, InputSwitchModule, CalendarModule, TabViewModule, FornecedorFormEnderecoComponent, 
     FornecedorFormContatoComponent],

@@ -1,5 +1,6 @@
 export class Cliente {
-    id!: number;   
+    id!: number;  
+    cnpjCpf!: string; 
     nome!: String;
     email!: String;
     telefone!: String;

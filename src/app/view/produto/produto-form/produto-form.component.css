@@ -1,0 +1,14 @@
+.centralizar {
+    height: 100%;
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.margem-tag {
+    margin-right: 5px;
+}

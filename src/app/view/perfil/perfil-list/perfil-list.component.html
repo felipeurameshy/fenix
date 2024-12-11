@@ -54,7 +54,7 @@
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-entidade>
-          <tr (dblclick)="alterarEntidade(entidade)" (click)="selecionarEntidade(entidade)" [class]="entidade.id == idEntidade ?'linha-selecao-tabela':null">
+          <tr (click)="selecionarEntidade(entidade)" [class]="entidade.id == idEntidade ?'linha-selecao-tabela':null">
               <td>{{entidade.id}}</td>
               <td>{{entidade.descricao}}</td>
           </tr>

@@ -63,4 +63,8 @@ export class ClienteService extends BaseResourceService<Cliente>{
       });
   }
 
+  pesquisarPorCnpjCpf (cnpjCpf: string): Promise<any> {
+    return firstValueFrom(this.http.get<Cliente>(`${this.apiPath}/pesquisar-por-cnpj-cpf/${cnpjCpf}`));
+  }
+
 }

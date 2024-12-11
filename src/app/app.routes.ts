@@ -25,6 +25,8 @@ import { DespesaFormComponent } from './view/despesa/despesa-form/despesa-form.c
 import { DespesaListComponent } from './view/despesa/despesa-list/despesa-list.component';;
 import { FornecedorListComponent } from './view/fornecedor/fornecedor-list/fornecedor-list.component';
 import { FornecedorFormComponent } from './view/fornecedor/fornecedor-form/fornecedor-form.component';
+import { ProdutoFormComponent } from './view/produto/produto-form/produto-form.component';
+import { ProdutoListComponent } from './view/produto/produto-list/produto-list.component';
 
 export const routes: Routes = [
 
@@ -202,6 +204,34 @@ export const routes: Routes = [
     canActivate:[SegurancaGuard],
     data: { roles: ['PERMISSAO_CONSULTAR']}
   },
+
+  //Produto
+  {
+    path: 'produto/novo',
+    component: ProdutoFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['PRODUTO_INCLUIR']}
+  },
+  {
+    path: 'produto/listar',
+    component: ProdutoListComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['PRODUTO_CONSULTAR']}
+  },
+  {
+    path: 'produto/editar/:id',
+    component: ProdutoFormComponent,
+    canActivate:[SegurancaGuard],
+    canDeactivate: [SegurancaDeactivateGuard],
+    data: { roles: ['PRODUTO_ALTERAR']}
+  },
+  {
+    path: 'produto/:id/:consulta/:tipo',
+    component: ProdutoFormComponent,
+    canActivate:[SegurancaGuard],
+    data: { roles: ['PRODUTO_CONSULTAR']}
+  },  
 
   //Secao
   {

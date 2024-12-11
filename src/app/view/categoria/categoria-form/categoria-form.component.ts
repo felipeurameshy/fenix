@@ -17,7 +17,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { BaseResourceFormComponent } from '../../../configuration/generic/components/base-resource-form.component';
 import { ErrorHandlerService } from '../../../configuration/core/error-handler.service';
 import { MenuFormComponent } from '../../../components/menu-form/menu-form.component';
-import { UpperCaseDirective } from '../../../configuration/shared/upper-case.directive';
 import { LoadingService } from '../../../configuration/core/loading.service';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -27,7 +26,7 @@ import { CategoriaService } from '../../../service/categoria.service';
 @Component({
   selector: 'app-categoria-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, MenuFormComponent, UpperCaseDirective, InputTextModule, ButtonModule, TooltipModule,
+  imports: [FormsModule, CommonModule, MenuFormComponent, InputTextModule, ButtonModule, TooltipModule,
     FieldsetModule, BreadcrumbModule, ToastModule, InputNumberModule, InputGroupModule, InputGroupAddonModule],
   templateUrl: './categoria-form.component.html',
   styleUrl: './categoria-form.component.css'

@@ -48,21 +48,21 @@
                   <label for="razaoSocial">Razão Social<span class="campoObrigatorio">*</span></label>
                   <input id="razaoSocial" class="inputfield w-full"
                   pInputText type="text" name="razaoSocial" [(ngModel)]="entidade.razaoSocial"
-                  [disabled]="consulta" required minlength="3" maxlength="200" upperCase>
+                  [disabled]="consulta" required minlength="3" maxlength="100">
                 </div>
       
                 <div class="field col-12 md:col-4" [ngClass]="formularioInvalido  && formulario.form.controls['nomeFantasia'].invalid? 'campoInvalido':'campoValido'">
                     <label for="nomeFantasia">Nome Fantasia<span class="campoObrigatorio">*</span></label>
                     <input id="nomeFantasia" class="inputfield w-full"
                     pInputText type="text" name="nomeFantasia" [(ngModel)]="entidade.nomeFantasia"
-                    [disabled]="consulta" required minlength="3" maxlength="100" upperCase>
+                    [disabled]="consulta" required minlength="3" maxlength="100">
                 </div>
 
                 <div class="field col-12 md:col-12">
                     <label for="observacao">Observação</label>                
                     <textarea id="observacao" name="observacao" class="inputfield w-full" [rows]="10" [cols]="30" 
                       pInputTextarea  [disabled]="consulta" [(ngModel)]="entidade.observacao"
-                      maxlength="5000" minlength="3"></textarea>
+                      maxlength="5000"></textarea>
                   </div> 
   
             </div>
