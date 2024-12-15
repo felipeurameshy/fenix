@@ -12,3 +12,18 @@
 .margem-tag {
     margin-right: 5px;
 }
+
+.fildset-tabview {
+    margin-top: 3px;
+    margin-left: 0px;
+    border: 2px solid #dee2e6;
+    background: #ffffff;
+    color: #495057;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+}
+
+.fildset-foto {
+    border: 0px solid #dee2e6 !important;
+}

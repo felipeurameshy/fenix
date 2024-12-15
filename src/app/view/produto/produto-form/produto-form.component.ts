@@ -46,6 +46,8 @@ import { SelectProdutoPaiComponent } from '../../../components/select-produto-pa
 })
 export class ProdutoFormComponent extends BaseResourceFormComponent<Produto> {
 
+  imagemCarregada!: string;
+
   public tiposStatus = [
     {label: 'ATIVO', value:'ATIVO'},
     {label: 'INATIVO', value:'INATIVO'}
@@ -112,6 +114,7 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto> {
       .then( dados => {
         this.entidade = dados;      
         this.inicializarObjetosNulosBuscar(this.entidade);
+        this.carregarImagem();
         if(this.consulta){
           this.title.setTitle (`Fênix - Consulta ${this.nomeTitle}`);
         }else{
@@ -143,13 +146,15 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto> {
 
   adicionarImagem(event: any){        
     this.entidade.imagem = event.originalEvent.body.nome;    
+    this.carregarImagem() ;
   }
 
-  carregarImagem(imagem: String){
-    if(imagem){            
-      return `${environment.apiUrl}/produto/buscar-imagem/${imagem}`
+  carregarImagem(){
+    if(this.entidade.imagem){      
+      console.log(this.entidade.imagem)      
+      return `${environment.apiUrl}/produto/buscar-imagem/${this.entidade.imagem}`
     }
-    return null;
+    return null;   
   }
 
   calcularMargem(proximo: string) {       

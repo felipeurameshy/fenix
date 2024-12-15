@@ -18,167 +18,188 @@
         <div class="col-12 md:col-12">
   
           <p-fieldset legend="Dados" class="fildset-formulario">
-  
+
             <div class="formgrid grid">
-
-              <div class="field col-12 md:col-2">
-                <label for="eanTreze">Ean 13</label>
-                <input id="eanTreze" class="inputfield w-full"
-                pInputText type="text" name="eanTreze" [(ngModel)]="entidade.eanTreze"
-                [disabled]="consulta" maxlength="13" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-              </div>
   
-              <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['descricao'].invalid? 'campoInvalido':'campoValido'">
-                <label for="descricao">Descrição<span class="campoObrigatorio">*</span></label>
-                <input id="descricao" class="inputfield w-full"
-                pInputText type="text" name="descricao" [(ngModel)]="entidade.descricao"
-                [disabled]="consulta" required minlength="2" maxlength="200">
+              <div class="col-12 md:col-10">
+
+                <div class="formgrid grid">
+
+                  <div class="field col-12 md:col-2">
+                    <label for="eanTreze">Ean 13</label>
+                    <input id="eanTreze" class="inputfield w-full"
+                    pInputText type="text" name="eanTreze" [(ngModel)]="entidade.eanTreze"
+                    [disabled]="consulta" maxlength="13" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                  </div>
+      
+                  <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['descricao'].invalid? 'campoInvalido':'campoValido'">
+                    <label for="descricao">Descrição<span class="campoObrigatorio">*</span></label>
+                    <input id="descricao" class="inputfield w-full"
+                    pInputText type="text" name="descricao" [(ngModel)]="entidade.descricao"
+                    [disabled]="consulta" required minlength="2" maxlength="200">
+                  </div>
+
+                  <div class="field col-12 md:col-4" [ngClass]="formularioInvalido  && formulario.form.controls['descricaoReduzida'].invalid? 'campoInvalido':'campoValido'">
+                    <label for="descricaoReduzida">Descrição Reduzida<span class="campoObrigatorio">*</span></label>
+                    <input id="descricaoReduzida" class="inputfield w-full"
+                    pInputText type="text" name="descricaoReduzida" [(ngModel)]="entidade.descricaoReduzida"
+                    [disabled]="consulta" required minlength="2" maxlength="60">
+                  </div>
+
+                  <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                    <label>Status<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                      <p-dropdown [options]="tiposStatus" [filter]="false" placeholder="Selecione"
+                      [required]="true" name="status" [(ngModel)]="entidade.status"  [disabled]="consulta"></p-dropdown>
+                    </div>
+                  </div>
+
+                  <div class="field col-12 md:col-2">
+                    <label>Data Desativação</label>
+                    <div class="p-grid p-fluid">
+                      <p-calendar name="dataDesativacao" [(ngModel)]="entidade.dataDesativacao" dateFormat="dd/mm/yy"
+                      [inline]="false" [readonlyInput]="true" [showIcon]="false" [showOnFocus]="false"
+                      [disabled]="consulta"></p-calendar>
+                    </div>
+                  </div>
+
+                  <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                    <label>Tipo<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                      <p-dropdown [options]="tiposProduto" [filter]="false" placeholder="Selecione"
+                      [required]="true" name="tipo" [(ngModel)]="entidade.tipo"  [disabled]="consulta"></p-dropdown>
+                    </div>
+                  </div> 
+
+                  <div class="field col-12 md:col-2">
+                    <label for="referencia">Referência</label>
+                    <input id="referencia" class="inputfield w-full"
+                    pInputText type="text" name="referencia" [(ngModel)]="entidade.referencia"
+                    [disabled]="consulta" maxlength="20">
+                  </div>
+
+                  <div class="field col-12 md:col-4">
+                    <label for="marca">Marca</label>
+                    <input id="marca" class="inputfield w-full"
+                    pInputText type="text" name="marca" [(ngModel)]="entidade.marca"
+                    [disabled]="consulta" maxlength="100">
+                  </div>
+
+                  <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                    <label>Produto Pai<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                      <app-select-produto-pai [model]="entidade.produtoPai" [desabilitar]="consulta"
+                        [validacao]="formularioInvalido && !entidade.produtoPai.id" [required]="false"
+                        (seleciona)="selecionarProdutoPai($event)"></app-select-produto-pai>
+                    </div>
+                  </div> 
+                  
+                  <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                    <label>Seção<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                      <app-select-secao [model]="entidade.secao" [desabilitar]="consulta"
+                        [validacao]="formularioInvalido && !entidade.secao.id" [required]="true"
+                        (seleciona)="selecionarSecao($event)"></app-select-secao>                
+                    </div>
+                  </div> 
+                  
+                  <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
+                    <label>Fornecedor<span class="campoObrigatorio">*</span></label>
+                    <div class="p-grid p-fluid">
+                      <app-select-fornecedor [model]="entidade.fornecedor" [desabilitar]="consulta"
+                        [validacao]="formularioInvalido && !entidade.fornecedor.id" [required]="true"
+                        (seleciona)="selecionarFornecedor($event)"></app-select-fornecedor>
+                    </div>
+                  </div>              
+
+                  <div class="field col-12 md:col-2">
+                    <label for="valorCusto">Valor Custo<span class="campoObrigatorio">*</span></label>
+                    <p-inputGroup>
+                      <p-inputGroupAddon>
+                          <span>R$</span>
+                      </p-inputGroupAddon>
+                      <p-inputNumber class="inputfield w-full" inputId="valorCusto"
+                      name="valorCusto" [(ngModel)]="entidade.valorCusto" mode="decimal" [min]="0" [required]="true"
+                      [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
+                      (keyup.enter)="calcularMargem('venda')" (onBlur)="calcularMargem('venda')"></p-inputNumber>
+                    </p-inputGroup>
+                  </div> 
+
+                  <div class="field col-12 md:col-2">
+                    <label for="valorVenda">Valor Venda<span class="campoObrigatorio">*</span></label>
+                    <p-inputGroup>
+                      <p-inputGroupAddon>
+                          <span>R$</span>
+                      </p-inputGroupAddon>
+                      <p-inputNumber class="inputfield w-full" inputId="valorVenda"
+                      name="valorVenda" [(ngModel)]="entidade.valorVenda" mode="decimal" [min]="0" [required]="true"
+                      [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
+                      (keyup.enter)="calcularMargem('desconto')" (onBlur)="calcularMargem('desconto')"></p-inputNumber>
+                    </p-inputGroup>
+                  </div> 
+
+                  <div class="field col-12 md:col-2">
+                    <label for="valorDesconto">Valor Desconto<span class="campoObrigatorio">*</span></label>
+                    <p-inputGroup>
+                      <p-inputGroupAddon>
+                          <span>R$</span>
+                      </p-inputGroupAddon>
+                      <p-inputNumber class="inputfield w-full" inputId="valorDesconto"
+                      name="valorDesconto" [(ngModel)]="entidade.valorDesconto" mode="decimal" [min]="0" [required]="true"
+                      [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
+                      (keyup.enter)="calcularMargem('vendaLiquido')" (onBlur)="calcularMargem('vendaLiquido')"></p-inputNumber>
+                    </p-inputGroup>
+                  </div>   
+                  
+                  <div class="field col-12 md:col-2">
+                    <label for="valorVendaLiquido">Valor Venda Liquido<span class="campoObrigatorio">*</span></label>
+                    <p-inputGroup>
+                      <p-inputGroupAddon>
+                          <span>R$</span>
+                      </p-inputGroupAddon>
+                      <p-inputNumber class="inputfield w-full" inputId="valorVendaLiquido"
+                      name="valorVendaLiquido" [(ngModel)]="entidade.valorVendaLiquido" mode="decimal" [min]="0" [required]="true"
+                      [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
+                      (keyup.enter)="calcularMargemValorLiquido()" (onBlur)="calcularMargemValorLiquido()"></p-inputNumber>
+                    </p-inputGroup>
+                  </div> 
+                  
+                  <div class="field col-12 md:col-2">
+                    <label for="margem">Margem</label>
+                    <p-inputGroup>
+                      <p-inputGroupAddon>
+                          <span>%</span>
+                      </p-inputGroupAddon>
+                      <p-inputNumber class="inputfield w-full" inputId="margem"
+                      name="margem" [(ngModel)]="entidade.margem" mode="decimal" [min]="0" [required]="true"
+                      [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta" [readonly]="true"></p-inputNumber>
+                    </p-inputGroup>
+                  </div>
+
+                  <div class="field col-12 md:col-2">
+                    <label for="quantidadeEstoque">Estoque</label>
+                    <input id="quantidadeEstoque" class="inputfield w-full"
+                    pInputText type="text" name="quantidadeEstoque" [(ngModel)]="entidade.quantidadeEstoque"
+                    [disabled]="consulta" readonly="true">
+                  </div>
+      
+                </div>
+
               </div>
 
-              <div class="field col-12 md:col-6" [ngClass]="formularioInvalido  && formulario.form.controls['descricaoReduzida'].invalid? 'campoInvalido':'campoValido'">
-                <label for="descricaoReduzida">Descrição Reduzida<span class="campoObrigatorio">*</span></label>
-                <input id="descricaoReduzida" class="inputfield w-full"
-                pInputText type="text" name="descricaoReduzida" [(ngModel)]="entidade.descricaoReduzida"
-                [disabled]="consulta" required minlength="2" maxlength="60">
-              </div>
-
-              <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
-                <label>Status<span class="campoObrigatorio">*</span></label>
-                <div class="p-grid p-fluid">
-                  <p-dropdown [options]="tiposStatus" [filter]="false" placeholder="Selecione"
-                  [required]="true" name="status" [(ngModel)]="entidade.status"  [disabled]="consulta"></p-dropdown>
+              <div class="col-12 md:col-2">
+                <label for="foto">Imagem</label>
+                <div class="fildset-tabview fildset-foto">
+                  <img src="{{imagemCarregada}}" style="width: 130px; height: 130px; margin-bottom: 5px; text-align: center;">             
+                  <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <p-fileUpload name="file" mode="basic" [auto]="true" [maxFileSize]="100000000000" 
+                    chooseLabel="Adicionar Imagem" [url]="urlUploadArquivo" accept="image/*"              
+                    (onUpload)="adicionarImagem($event)" [disabled]="consulta">
+                    </p-fileUpload> 
+                  </div>
                 </div>
               </div>
 
-              <div class="field col-12 md:col-2">
-                <label>Data Desativação</label>
-                <div class="p-grid p-fluid">
-                  <p-calendar name="dataDesativacao" [(ngModel)]="entidade.dataDesativacao" dateFormat="dd/mm/yy"
-                  [inline]="false" [readonlyInput]="true" [showIcon]="false" [showOnFocus]="false"
-                  [disabled]="consulta"></p-calendar>
-                </div>
-              </div>
-
-              <div class="field col-12 md:col-2" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
-                <label>Tipo<span class="campoObrigatorio">*</span></label>
-                <div class="p-grid p-fluid">
-                  <p-dropdown [options]="tiposProduto" [filter]="false" placeholder="Selecione"
-                  [required]="true" name="tipo" [(ngModel)]="entidade.tipo"  [disabled]="consulta"></p-dropdown>
-                </div>
-              </div> 
-
-              <div class="field col-12 md:col-2">
-                <label for="referencia">Referência</label>
-                <input id="referencia" class="inputfield w-full"
-                pInputText type="text" name="referencia" [(ngModel)]="entidade.referencia"
-                [disabled]="consulta" maxlength="20">
-              </div>
-
-              <div class="field col-12 md:col-4">
-                <label for="marca">Marca</label>
-                <input id="marca" class="inputfield w-full"
-                pInputText type="text" name="marca" [(ngModel)]="entidade.marca"
-                [disabled]="consulta" maxlength="100">
-              </div>
-
-              <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
-                <label>Produto Pai<span class="campoObrigatorio">*</span></label>
-                <div class="p-grid p-fluid">
-                  <app-select-produto-pai [model]="entidade.produtoPai" [desabilitar]="consulta"
-                    [validacao]="formularioInvalido && !entidade.produtoPai.id" [required]="false"
-                    (seleciona)="selecionarProdutoPai($event)"></app-select-produto-pai>
-                </div>
-              </div> 
-              
-              <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
-                <label>Seção<span class="campoObrigatorio">*</span></label>
-                <div class="p-grid p-fluid">
-                  <app-select-secao [model]="entidade.secao" [desabilitar]="consulta"
-                    [validacao]="formularioInvalido && !entidade.secao.id" [required]="true"
-                    (seleciona)="selecionarSecao($event)"></app-select-secao>                
-                </div>
-              </div> 
-              
-              <div class="field col-12 md:col-4" [ngClass]="formularioInvalido? 'campoInvalido':'campoValido'">
-                <label>Fornecedor<span class="campoObrigatorio">*</span></label>
-                <div class="p-grid p-fluid">
-                  <app-select-fornecedor [model]="entidade.fornecedor" [desabilitar]="consulta"
-                    [validacao]="formularioInvalido && !entidade.fornecedor.id" [required]="true"
-                    (seleciona)="selecionarFornecedor($event)"></app-select-fornecedor>
-                </div>
-              </div>              
-
-              <div class="field col-12 md:col-2">
-                <label for="valorCusto">Valor Custo<span class="campoObrigatorio">*</span></label>
-                <p-inputGroup>
-                  <p-inputGroupAddon>
-                      <span>R$</span>
-                  </p-inputGroupAddon>
-                  <p-inputNumber class="inputfield w-full" inputId="valorCusto"
-                  name="valorCusto" [(ngModel)]="entidade.valorCusto" mode="decimal" [min]="0" [required]="true"
-                  [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
-                  (keyup.enter)="calcularMargem('venda')" (onBlur)="calcularMargem('venda')"></p-inputNumber>
-                </p-inputGroup>
-              </div> 
-
-              <div class="field col-12 md:col-2">
-                <label for="valorVenda">Valor Venda<span class="campoObrigatorio">*</span></label>
-                <p-inputGroup>
-                  <p-inputGroupAddon>
-                      <span>R$</span>
-                  </p-inputGroupAddon>
-                  <p-inputNumber class="inputfield w-full" inputId="valorVenda"
-                  name="valorVenda" [(ngModel)]="entidade.valorVenda" mode="decimal" [min]="0" [required]="true"
-                  [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
-                  (keyup.enter)="calcularMargem('desconto')" (onBlur)="calcularMargem('desconto')"></p-inputNumber>
-                </p-inputGroup>
-              </div> 
-
-              <div class="field col-12 md:col-2">
-                <label for="valorDesconto">Valor Desconto<span class="campoObrigatorio">*</span></label>
-                <p-inputGroup>
-                  <p-inputGroupAddon>
-                      <span>R$</span>
-                  </p-inputGroupAddon>
-                  <p-inputNumber class="inputfield w-full" inputId="valorDesconto"
-                  name="valorDesconto" [(ngModel)]="entidade.valorDesconto" mode="decimal" [min]="0" [required]="true"
-                  [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
-                  (keyup.enter)="calcularMargem('vendaLiquido')" (onBlur)="calcularMargem('vendaLiquido')"></p-inputNumber>
-                </p-inputGroup>
-              </div>   
-              
-              <div class="field col-12 md:col-2">
-                <label for="valorVendaLiquido">Valor Venda Liquido<span class="campoObrigatorio">*</span></label>
-                <p-inputGroup>
-                  <p-inputGroupAddon>
-                      <span>R$</span>
-                  </p-inputGroupAddon>
-                  <p-inputNumber class="inputfield w-full" inputId="valorVendaLiquido"
-                  name="valorVendaLiquido" [(ngModel)]="entidade.valorVendaLiquido" mode="decimal" [min]="0" [required]="true"
-                  [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta"
-                  (keyup.enter)="calcularMargemValorLiquido()" (onBlur)="calcularMargemValorLiquido()"></p-inputNumber>
-                </p-inputGroup>
-              </div> 
-              
-              <div class="field col-12 md:col-2">
-                <label for="margem">Margem</label>
-                <p-inputGroup>
-                  <p-inputGroupAddon>
-                      <span>%</span>
-                  </p-inputGroupAddon>
-                  <p-inputNumber class="inputfield w-full" inputId="margem"
-                  name="margem" [(ngModel)]="entidade.margem" mode="decimal" [min]="0" [required]="true"
-                  [minFractionDigits]="2" [maxFractionDigits]="2" [useGrouping]="false" [disabled]="consulta" [readonly]="true"></p-inputNumber>
-                </p-inputGroup>
-              </div>
-
-              <div class="field col-12 md:col-2">
-                <label for="quantidadeEstoque">Estoque</label>
-                <input id="quantidadeEstoque" class="inputfield w-full"
-                pInputText type="text" name="quantidadeEstoque" [(ngModel)]="entidade.quantidadeEstoque"
-                [disabled]="consulta" readonly="true">
-              </div>
-  
             </div>
   
           </p-fieldset>
