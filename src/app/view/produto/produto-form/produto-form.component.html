@@ -189,15 +189,19 @@
 
               <div class="col-12 md:col-2">
                 <label for="foto">Imagem</label>
-                <div class="fildset-tabview fildset-foto">
-                  <img src="{{imagemCarregada}}" style="width: 130px; height: 130px; margin-bottom: 5px; text-align: center;">             
-                  <div class="ui-g-12 ui-md-12 ui-fluid">
-                    <p-fileUpload name="file" mode="basic" [auto]="true" [maxFileSize]="100000000000" 
-                    chooseLabel="Adicionar Imagem" [url]="urlUploadArquivo" accept="image/*"              
-                    (onUpload)="adicionarImagem($event)" [disabled]="consulta">
-                    </p-fileUpload> 
+                <p-card>
+                  <div class="centralizar-conteudo">
+                    <div>
+                      <img [src]="carregarImagem(entidade.imagem)" style="width: 130px; height: 130px; margin-bottom: 5px; text-align: center;">
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-fluid botao-adicionar-imagem">
+                      <p-fileUpload name="file" mode="basic" [auto]="true" [maxFileSize]="100000000000" 
+                      chooseLabel="Adicionar Imagem" [url]="urlUploadArquivo" accept="image/*"              
+                      (onUpload)="adicionarImagem($event)" [disabled]="consulta">
+                      </p-fileUpload> 
+                    </div>
                   </div>
-                </div>
+                </p-card>
               </div>
 
             </div>

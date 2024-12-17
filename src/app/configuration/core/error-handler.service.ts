@@ -23,16 +23,14 @@ export class ErrorHandlerService {
 
       return this.messageService.add({severity:'error', summary:'Erro', detail: 'Servidor da API está inacessível' });
 
-    }else if (errorResponse instanceof HttpErrorResponse && errorResponse.status >= 400 && errorResponse.status <= 499) {
+    }else  {
       
-      msg = "";
-      errorResponse.error.forEach(function (value: any) {  
-        msg = value.mensagem + ", " + msg;
-      });                     
-      msg = msg.substr(0,msg.length - 2);
+      if(errorResponse.error.message){
+        msg = errorResponse.error.message;
+      }else{
+        msg = errorResponse.message;
+      }
       
-    } else {
-      msg = errorResponse
     }
 
     this.messageService.add({severity:'error', summary:'Erro', detail: msg });

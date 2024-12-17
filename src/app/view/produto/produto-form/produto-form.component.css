@@ -1,29 +1,7 @@
-.centralizar {
-    height: 100%;
-    min-height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-}
-
-.margem-tag {
-    margin-right: 5px;
-}
-
-.fildset-tabview {
-    margin-top: 3px;
-    margin-left: 0px;
-    border: 2px solid #dee2e6;
-    background: #ffffff;
-    color: #495057;
-    border-radius: 3px;
-    padding: 5px;
+.centralizar-conteudo {
     text-align: center;
 }
 
-.fildset-foto {
-    border: 0px solid #dee2e6 !important;
+.botao-adicionar-imagem {
+    margin-bottom: -10px;
 }
